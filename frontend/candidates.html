@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidates · Ligenix HR</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">LX</div>
+        <div>
+          <div class="logo-text">Ligenix HR</div>
+          <div class="logo-sub">Recruitment Platform</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <a href="/" class="nav-item" data-page="dashboard"><svg class="nav-icon" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>Dashboard</a>
+        <a href="/jobs.html" class="nav-item" data-page="jobs"><svg class="nav-icon" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" />
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+          </svg>Job Postings</a>
+        <a href="/candidates.html" class="nav-item" data-page="candidates"><svg class="nav-icon" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+          </svg>Candidates</a>
+        <div class="nav-section-label">Sourcing</div>
+        <a href="/scraped_candidates.html" class="nav-item" data-page="scraped_candidates"><svg class="nav-icon"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>LinkedIn Scraper</a>
+        <div class="nav-section-label">Scheduling</div>
+        <a href="/schedule_interview.html" class="nav-item" data-page="schedule_interview"><svg class="nav-icon"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>Schedule Interview</a>
+        <div class="nav-section-label">System</div>
+        <a href="/settings.html" class="nav-item" data-page="settings"><svg class="nav-icon" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div>
+            <div class="page-title">Candidates</div>
+            <div class="page-subtitle">Email applications with AI evaluation</div>
+          </div>
+          <div class="header-actions">
+            <select id="filterStatus" onchange="filterCandidates()" style="max-width:160px">
+              <option value="">All Status</option>
+              <option value="appoint">Appointed</option>
+              <option value="reject">Rejected</option>
+            </select>
+            <button class="btn btn-primary" onclick="openUploadModal()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              Upload CV
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">All Candidates</span>
+            <span id="candidateCount" class="text-sm text-muted"></span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Position</th>
+                  <th>Score</th>
+                  <th>Status</th>
+                  <th>CV Link</th>
+                  <th>Interview</th>
+                  <th>Applied</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="candidatesTable">
+                <tr>
+                  <td colspan="8" style="padding:40px;text-align:center">
+                    <div class="loader">
+                      <div class="loader-dot"></div>
+                      <div class="loader-dot"></div>
+                      <div class="loader-dot"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Modal -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Upload & Analyze CV</span>
+        <button class="modal-close" onclick="closeUploadModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="cvFile" accept=".pdf">
+          <div class="upload-icon">📄</div>
+          <div class="upload-text">Drop CV PDF here or click to browse</div>
+          <div class="upload-hint">AI will analyze and score the candidate automatically</div>
+        </div>
+        <div id="uploadStatus" class="mt-4" style="display:none"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeUploadModal()">Cancel</button>
+        <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeCv()">
+          🤖 Analyze CV
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Candidate Detail Modal -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal" style="max-width:720px">
+      <div class="modal-header">
+        <span class="modal-title" id="detailName">Candidate Details</span>
+        <button class="modal-close" onclick="closeDetail()">✕</button>
+      </div>
+      <div class="modal-body" id="detailBody"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeDetail()">Close</button>
+        <button class="btn btn-primary" id="detailScheduleBtn">📅 Schedule Interview</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/utils.js"></script>
+  <script>
+    let allCandidates = [];
+
+    async function loadCandidates() {
+      try {
+        allCandidates = await API.get('/api/candidates');
+        document.getElementById('candidateCount').textContent = `${allCandidates.length} candidates`;
+        renderCandidates(allCandidates);
+      } catch (e) { toast('Failed to load candidates', 'error'); }
+    }
+
+    function renderCandidates(candidates) {
+      const tbody = document.getElementById('candidatesTable');
+      if (!candidates.length) {
+        tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">No candidates yet</div><div class="empty-desc">Upload CVs or configure email listener to collect applications</div></div></td></tr>`;
+        return;
+      }
+      tbody.innerHTML = candidates.map(c => {
+        const name = candidateName(c);
+        const email = c.candidate?.email || c.email || '—';
+        const pos = c.selected_position?.position_name || '—';
+        const score = c.fit_score?.overall || 0;
+        const status = c.fit_score?.breakdown?.Status || 'pending';
+        const cvUrl = c.cv_url;
+        const interviewDate = c.interview_date;
+        return `<tr>
+      <td>
+        <div class="flex items-center gap-2">
+          <div class="profile-avatar" style="width:34px;height:34px;font-size:13px">${initials(name)}</div>
+          <div>
+            <div class="td-name">${name}</div>
+            <div class="td-email">${email}</div>
+          </div>
+        </div>
+      </td>
+      <td class="text-sm">${pos}</td>
+      <td>${renderScore(score)}</td>
+      <td>${statusBadge(status)}</td>
+      <td>${cvUrl ? `<a href="${cvUrl}" target="_blank" class="btn btn-secondary btn-sm">View CV</a>` : '<span class="text-muted text-xs">—</span>'}</td>
+      <td>${interviewDate ? `<span class="badge badge-info text-xs">📅 ${interviewDate}</span>` : '<span class="text-muted text-xs">—</span>'}</td>
+      <td class="text-sm text-muted">${timeAgo(c.created_at)}</td>
+      <td>
+        <div class="flex gap-2">
+          <button class="btn btn-secondary btn-sm" onclick="viewDetail('${c.id}')">View</button>
+          ${status === 'appoint' ? `<button class="btn btn-success btn-sm" onclick="scheduleInterview('${c.id}')">Schedule</button>` : ''}
+          <button class="btn btn-danger btn-sm" onclick="deleteCandidate('${c.id}')">Delete</button>
+        </div>
+      </td>
+    </tr>`;
+      }).join('');
+    }
+
+    async function deleteCandidate(id) {
+      if (!confirm('Are you sure you want to delete this candidate? This will also cancel any scheduled interviews.')) return;
+      try {
+        await API.delete(`/api/candidates/${id}`);
+        toast('Candidate deleted');
+        loadCandidates();
+      } catch (e) {
+        toast('Failed to delete candidate: ' + e.message, 'error');
+      }
+    }
+
+    function filterCandidates() {
+      const f = document.getElementById('filterStatus').value;
+      const filtered = f ? allCandidates.filter(c => c.fit_score?.breakdown?.Status === f) : allCandidates;
+      renderCandidates(filtered);
+    }
+
+    function openUploadModal() { document.getElementById('uploadModal').classList.add('open'); }
+    function closeUploadModal() { document.getElementById('uploadModal').classList.remove('open'); }
+
+    async function analyzeCv() {
+      const file = document.getElementById('cvFile').files[0];
+      if (!file) { toast('Please select a PDF file', 'warning'); return; }
+
+      const btn = document.getElementById('analyzeBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<div class="loader"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div> Analyzing...';
+
+      const statusEl = document.getElementById('uploadStatus');
+      statusEl.style.display = 'block';
+      statusEl.innerHTML = `<p class="text-sm text-muted">⏳ Parsing CV and running AI evaluation...</p>`;
+
+      const formData = new FormData();
+      formData.append('cv', file);
+
+      try {
+        const result = await API.postForm('/api/candidates/upload', formData);
+        const c = result.candidate;
+        const name = candidateName(c);
+        const status = c.fit_score?.breakdown?.Status;
+        const score = c.fit_score?.overall;
+
+        statusEl.innerHTML = `
+      <div style="background:var(--bg-deep);border:1px solid var(--border);border-radius:var(--radius);padding:16px">
+        <div class="flex items-center justify-between mb-4">
+          <strong>${name}</strong>${statusBadge(status)}
+        </div>
+        <div class="text-sm text-muted">Score: <strong>${score}/10</strong> · Position: ${c.selected_position?.position_name || '—'}</div>
+        <div class="text-sm text-muted mt-4">${c.summary?.overall_summary || ''}</div>
+      </div>`;
+
+        toast(`${name} → ${status === 'appoint' ? '✅ Shortlisted!' : '❌ Rejected'}`, status === 'appoint' ? 'success' : 'info');
+        loadCandidates();
+      } catch (e) {
+        toast('Analysis failed: ' + e.message, 'error');
+        statusEl.innerHTML = `<p class="text-sm" style="color:var(--rose)">Error: ${e.message}</p>`;
+      } finally {
+        btn.disabled = false; btn.innerHTML = '🤖 Analyze CV';
+      }
+    }
+
+    function viewDetail(id) {
+      const c = allCandidates.find(x => x.id === id);
+      if (!c) return;
+      const name = candidateName(c);
+      const breakdown = c.fit_score?.breakdown || {};
+      const summary = c.summary || {};
+
+      document.getElementById('detailName').textContent = name;
+      document.getElementById('detailBody').innerHTML = `
+    <div class="flex gap-4 mb-4">
+      <div class="profile-avatar" style="width:56px;height:56px;font-size:22px">${initials(name)}</div>
+      <div>
+        <div style="font-size:18px;font-weight:600">${name}</div>
+        <div class="text-sm text-muted">${c.candidate?.email || ''} · ${c.candidate?.phone || ''}</div>
+        <div class="mt-4">${statusBadge(breakdown.Status)}</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      ${[['Experience', breakdown.experience], ['Technical Skills', breakdown.technical_skills], ['Achievements', breakdown.achievements], ['Education', breakdown.education]].map(([label, score]) => `
+        <div style="background:var(--bg-elevated);border-radius:var(--radius);padding:12px">
+          <div class="text-xs text-muted mb-2">${label}</div>
+          ${renderScore(score || 0)}
+        </div>`).join('')}
+    </div>
+    <div class="form-group">
+      <label>AI Summary</label>
+      <div style="background:var(--bg-elevated);border-radius:var(--radius);padding:12px;font-size:13px;color:var(--text-secondary)">${summary.overall_summary || '—'}</div>
+    </div>
+    ${summary.technical_skills?.length ? `<div class="form-group mt-4"><label>Skills</label><div class="flex gap-2" style="flex-wrap:wrap;margin-top:4px">${summary.technical_skills.map(s => `<span class="badge badge-info">${s}</span>`).join('')}</div></div>` : ''}
+    ${summary.draft_mail ? `
+    <div class="form-group mt-4">
+      <label>Draft Email</label>
+      <div style="background:var(--bg-deep);border:1px solid var(--border-active);border-radius:var(--radius);padding:14px;font-size:13px;white-space:pre-wrap;color:var(--text-secondary)">${summary.draft_mail}</div>
+      <button class="btn btn-secondary btn-sm mt-4" onclick="copyText(\`${summary.draft_mail.replace(/`/g, '\\`')}\`)">Copy Draft Email</button>
+    </div>` : ''}
+    ${c.conversation_text ? `<div class="form-group mt-4"><label>Call Transcript</label><div style="background:var(--bg-deep);border-radius:var(--radius);padding:12px;font-size:12px;white-space:pre-wrap;color:var(--text-muted);max-height:150px;overflow-y:auto">${c.conversation_text}</div></div>` : ''}
+  `;
+      document.getElementById('detailScheduleBtn').onclick = () => { closeDetail(); scheduleInterview(id); };
+      document.getElementById('detailModal').classList.add('open');
+    }
+
+    function closeDetail() { document.getElementById('detailModal').classList.remove('open'); }
+
+    function scheduleInterview(id) {
+      window.location.href = `/schedule_interview.html?candidate=${id}`;
+    }
+
+    loadCandidates();
+    setActiveNav();
+  </script>
+</body>
+
+</html>

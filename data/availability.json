@@ -1,0 +1,74 @@
+[
+  {
+    "id": "def-mon-1",
+    "day_of_week": 0,
+    "day_name": "Monday",
+    "start_time": "10:00",
+    "end_time": "11:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "def-mon-2",
+    "day_of_week": 0,
+    "day_name": "Monday",
+    "start_time": "14:00",
+    "end_time": "15:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "bb663596-97ea-4877-8f63-547946e0b983",
+    "day_of_week": 1,
+    "day_name": "Tuesday",
+    "start_time": "10:00",
+    "end_time": "22:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "d8dcef58-ef73-4992-8595-8d8219512ba2",
+    "day_of_week": 1,
+    "day_name": "Tuesday",
+    "start_time": "10:00",
+    "end_time": "11:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "da7022e4-b5b3-475f-b480-ae37c6659619",
+    "day_of_week": 1,
+    "day_name": "Tuesday",
+    "start_time": "14:00",
+    "end_time": "15:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "29349a2c-fdb5-435e-9827-f26805e6d000",
+    "day_of_week": 3,
+    "day_name": "Thursday",
+    "start_time": "10:00",
+    "end_time": "11:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "2eac8f36-fc50-4073-89ff-02fb2fc4753b",
+    "day_of_week": 3,
+    "day_name": "Thursday",
+    "start_time": "15:00",
+    "end_time": "16:00",
+    "duration_minutes": 60,
+    "active": true
+  },
+  {
+    "id": "59771cf7-3b0b-40dc-80be-9c0bacdee6bc",
+    "day_of_week": 4,
+    "day_name": "Friday",
+    "start_time": "11:00",
+    "end_time": "12:00",
+    "duration_minutes": 60,
+    "active": true
+  }
+]

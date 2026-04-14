@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Availability · Ligenix HR</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .day-column {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 280px;
+    }
+
+    .day-header {
+      padding: 10px 12px;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .day-header.has-slots {
+      color: var(--accent-bright);
+      border-bottom-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .slot-pill {
+      margin: 8px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12px;
+      position: relative;
+    }
+
+    .slot-pill.inactive {
+      background: rgba(71, 85, 105, 0.15);
+      border-color: rgba(71, 85, 105, 0.2);
+      opacity: 0.5;
+    }
+
+    .slot-time {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .slot-duration {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .slot-actions {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .add-slot-btn {
+      margin: 8px;
+      border: 1px dashed rgba(59, 130, 246, 0.3);
+      border-radius: 8px;
+      padding: 8px;
+      width: calc(100% - 16px);
+      background: none;
+      color: var(--text-muted);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .add-slot-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      background: var(--accent-glow);
+    }
+
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+      transition: background var(--transition);
+    }
+
+    .timeline-row:hover {
+      background: var(--bg-elevated);
+    }
+
+    .timeline-row:last-child {
+      border-bottom: none;
+    }
+
+    .booking-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .bs-pending {
+      background: var(--amber);
+    }
+
+    .bs-triggered {
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .bs-completed {
+      background: var(--emerald);
+    }
+
+    .call-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .call-card:hover {
+      border-color: var(--border-active);
+    }
+
+    .call-card-header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .call-card-body {
+      padding: 16px 20px;
+    }
+
+    .transcript-box {
+      background: var(--bg-deep);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.8;
+      max-height: 200px;
+      overflow-y: auto;
+      color: var(--text-secondary);
+    }
+
+    .transcript-agent {
+      color: var(--accent-bright);
+      font-weight: 600;
+    }
+
+    .transcript-user {
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    .score-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .score-up {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald);
+    }
+
+    .score-same {
+      background: rgba(71, 85, 105, 0.2);
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 1100px) {
+      .week-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .week-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">LX</div>
+        <div>
+          <div class="logo-text">Ligenix HR</div>
+          <div class="logo-sub">Recruitment Platform</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <a href="/" class="nav-item" data-page="dashboard">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          Dashboard
+        </a>
+        <a href="/jobs.html" class="nav-item" data-page="jobs">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" />
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+          </svg>
+          Job Postings
+        </a>
+        <a href="/candidates.html" class="nav-item" data-page="candidates">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+          </svg>
+          Candidates
+        </a>
+        <div class="nav-section-label">Automation</div>
+        <a href="/availability.html" class="nav-item" data-page="availability">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+            <path d="m9 16 2 2 4-4" />
+          </svg>
+          Availability & Calls
+        </a>
+        <div class="nav-section-label">Sourcing</div>
+        <a href="/scraped_candidates.html" class="nav-item" data-page="scraped_candidates">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          LinkedIn Scraper
+        </a>
+        <div class="nav-section-label">System</div>
+        <a href="/settings.html" class="nav-item" data-page="settings">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          Settings
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-indicator" id="schedulerStatus">
+          <div class="status-dot"></div>
+          <span id="schedulerStatusText">Scheduler active</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div>
+            <div class="page-title">Availability & Automated Calls</div>
+            <div class="page-subtitle">Define weekly slots → candidates auto-booked → calls fire at interview time</div>
+          </div>
+          <div class="header-actions">
+            <div id="schedulerToggleBtn" class="btn btn-secondary" onclick="toggleScheduler()" style="cursor:pointer">
+              <span id="schedulerIcon">⏸</span>
+              <span id="schedulerLabel">Scheduler Running</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div style="display:flex;gap:0;padding:0 32px;border-bottom:1px solid var(--border);background:var(--bg-deep)">
+        <button class="tab-btn active" onclick="switchTab('slots')" id="tab-slots">Weekly Slots</button>
+        <button class="tab-btn" onclick="switchTab('booked')" id="tab-booked">Booked Interviews</button>
+        <button class="tab-btn" onclick="switchTab('calls')" id="tab-calls">Call Results</button>
+      </div>
+
+      <div class="page-body">
+
+        <!-- ── TAB: WEEKLY SLOTS ────────────────────────────────────────────── -->
+        <div id="pane-slots">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div style="font-size:15px;font-weight:600">Weekly Interview Schedule</div>
+              <div class="text-sm text-muted">Click + on any day to add a recurring interview slot. Appointed candidates
+                are booked automatically.</div>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-secondary btn-sm" onclick="addDefaultSlots()">📋 Add Defaults</button>
+            </div>
+          </div>
+
+          <div class="week-grid" id="weekGrid">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- Automation flow explainer -->
+          <div class="card">
+            <div class="card-body" style="padding:20px">
+              <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:16px">⚡ Automation
+                Flow</div>
+              <div class="flex gap-3" style="flex-wrap:wrap">
+                <div class="flow-step">
+                  <div class="flow-num">1</div>
+                  <div class="flow-text">Job posted<br><span class="text-muted">HR opens a position</span></div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <div class="flow-num">2</div>
+                  <div class="flow-text">CV arrives<br><span class="text-muted">Via email or upload</span></div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <div class="flow-num">3</div>
+                  <div class="flow-text">AI scores ≥ 6<br><span class="text-muted">Candidate appointed</span></div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step active">
+                  <div class="flow-num">4</div>
+                  <div class="flow-text">Next free slot booked<br><span class="text-muted">Calendar invite sent</span>
+                  </div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step active">
+                  <div class="flow-num">5</div>
+                  <div class="flow-text">Call fires at slot time<br><span class="text-muted">ElevenLabs AI</span></div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step active">
+                  <div class="flow-num">6</div>
+                  <div class="flow-text">Results on dashboard<br><span class="text-muted">Transcript + score</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB: BOOKED INTERVIEWS ──────────────────────────────────────── -->
+        <div id="pane-booked" style="display:none">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📅 Scheduled Interviews</span>
+              <button class="btn btn-secondary btn-sm" onclick="loadBooked()">↻ Refresh</button>
+            </div>
+            <div id="bookedList" style="padding:0">
+              <!-- populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB: CALL RESULTS ───────────────────────────────────────────── -->
+        <div id="pane-calls" style="display:none">
+          <div class="flex items-center justify-between mb-4">
+            <div style="font-size:15px;font-weight:600">Completed Interview Calls</div>
+            <div class="flex gap-2">
+              <button class="btn btn-primary btn-sm" onclick="syncCalls()" id="syncBtn">🔄 Sync Call History</button>
+              <button class="btn btn-secondary btn-sm" onclick="loadCallResults()">↻ Refresh</button>
+            </div>
+          </div>
+          <div id="callResultsGrid" style="display:flex;flex-direction:column;gap:16px">
+            <!-- populated -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Slot Modal -->
+  <div class="modal-overlay" id="addSlotModal">
+    <div class="modal" style="max-width:420px">
+      <div class="modal-header">
+        <span class="modal-title">Add Slot — <span id="modalDayName"></span></span>
+        <button class="modal-close" onclick="closeAddModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="flex-col gap-4">
+          <div class="form-grid" style="grid-template-columns:1fr 1fr">
+            <div class="form-group">
+              <label>Start Time</label>
+              <input type="time" id="slotStart" value="10:00">
+            </div>
+            <div class="form-group">
+              <label>End Time</label>
+              <input type="time" id="slotEnd" value="11:00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Duration (minutes)</label>
+            <select id="slotDuration">
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60" selected>60 min</option>
+              <option value="90">90 min</option>
+            </select>
+          </div>
+          <div
+            style="background:var(--bg-elevated);border-radius:8px;padding:12px;font-size:12px;color:var(--text-muted)">
+            This slot repeats every week. Candidates are booked into the next available occurrence automatically.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAddModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmAddSlot()">Add Slot</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .tab-btn {
+      padding: 14px 20px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-secondary);
+    }
+
+    .tab-btn.active {
+      color: var(--accent-bright);
+      border-bottom-color: var(--accent);
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      min-width: 130px;
+    }
+
+    .flow-step.active {
+      border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(59, 130, 246, 0.06);
+    }
+
+    .flow-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--bg-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .flow-step.active .flow-num {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--accent-bright);
+    }
+
+    .flow-text {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .flow-arrow {
+      color: var(--text-muted);
+      font-size: 18px;
+      align-self: center;
+    }
+  </style>
+
+  <script src="/static/js/utils.js"></script>
+  <script>
+    const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const SHORT_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    let allSlots = [];
+    let selectedDay = 0;
+
+    // ── Tab Switching ─────────────────────────────────────────────────────────────
+    function switchTab(name) {
+      ['slots', 'booked', 'calls'].forEach(t => {
+        document.getElementById(`pane-${t}`).style.display = t === name ? 'block' : 'none';
+        document.getElementById(`tab-${t}`).classList.toggle('active', t === name);
+      });
+      if (name === 'booked') loadBooked();
+      if (name === 'calls') loadCallResults();
+    }
+
+    // ── Week Grid ─────────────────────────────────────────────────────────────────
+    async function loadSlots() {
+      allSlots = await API.get('/api/availability/slots');
+      renderWeekGrid();
+    }
+
+    function renderWeekGrid() {
+      const grid = document.getElementById('weekGrid');
+      grid.innerHTML = DAYS.map((day, dayIdx) => {
+        const daySlots = allSlots.filter(s => s.day_of_week === dayIdx);
+        return `
+      <div class="day-column">
+        <div class="day-header ${daySlots.length ? 'has-slots' : ''}">
+          <span>${SHORT_DAYS[dayIdx]}</span>
+          ${daySlots.length ? `<span style="background:rgba(59,130,246,0.2);color:var(--accent-bright);border-radius:10px;padding:1px 6px;font-size:9px">${daySlots.length}</span>` : ''}
+        </div>
+        ${daySlots.map(s => `
+          <div class="slot-pill ${s.active ? '' : 'inactive'}">
+            <div class="slot-time">${s.start_time} – ${s.end_time}</div>
+            <div class="slot-duration">${s.duration_minutes} min · ${s.active ? 'Active' : 'Paused'}</div>
+            <div class="slot-actions">
+              <button class="btn btn-secondary btn-sm" style="padding:2px 8px;font-size:10px"
+                onclick="toggleSlot('${s.id}', ${!s.active})">
+                ${s.active ? 'Pause' : 'Resume'}
+              </button>
+              <button class="btn btn-danger btn-sm" style="padding:2px 8px;font-size:10px"
+                onclick="deleteSlot('${s.id}')">✕</button>
+            </div>
+          </div>
+        `).join('')}
+        <button class="add-slot-btn" onclick="openAddModal(${dayIdx})">
+          <span style="font-size:16px">+</span> Add Slot
+        </button>
+      </div>`;
+      }).join('');
+    }
+
+    // ── Add Slot Modal ────────────────────────────────────────────────────────────
+    function openAddModal(dayIdx) {
+      selectedDay = dayIdx;
+      document.getElementById('modalDayName').textContent = DAYS[dayIdx];
+      document.getElementById('addSlotModal').classList.add('open');
+    }
+    function closeAddModal() { document.getElementById('addSlotModal').classList.remove('open'); }
+
+    async function confirmAddSlot() {
+      const start = document.getElementById('slotStart').value;
+      const end = document.getElementById('slotEnd').value;
+      const duration = document.getElementById('slotDuration').value;
+      if (!start || !end) { toast('Please set start and end time', 'warning'); return; }
+      await API.post('/api/availability/slots', { day_of_week: selectedDay, start_time: start, end_time: end, duration_minutes: parseInt(duration) });
+      toast(`Slot added for ${DAYS[selectedDay]}`, 'success');
+      closeAddModal();
+      loadSlots();
+    }
+
+    async function deleteSlot(id) {
+      await fetch(`/api/availability/slots/${id}`, { method: 'DELETE' });
+      toast('Slot removed', 'info');
+      loadSlots();
+    }
+
+    async function toggleSlot(id, active) {
+      await API.put(`/api/availability/slots/${id}/toggle`, { active });
+      loadSlots();
+    }
+
+    async function addDefaultSlots() {
+      const defaults = [
+        { day: 1, start: '10:00', end: '11:00' }, // Tue
+        { day: 1, start: '14:00', end: '15:00' },
+        { day: 3, start: '10:00', end: '11:00' }, // Thu
+        { day: 3, start: '15:00', end: '16:00' },
+        { day: 4, start: '11:00', end: '12:00' }, // Fri
+      ];
+      for (const d of defaults) {
+        await API.post('/api/availability/slots', { day_of_week: d.day, start_time: d.start, end_time: d.end, duration_minutes: 60 });
+      }
+      toast('Default slots added (Tue/Thu/Fri)', 'success');
+      loadSlots();
+    }
+
+    // ── Booked Interviews ─────────────────────────────────────────────────────────
+    async function loadBooked() {
+      const booked = await API.get('/api/availability/booked');
+      const list = document.getElementById('bookedList');
+
+      if (!booked.length) {
+        list.innerHTML = `<div class="empty-state"><div class="empty-icon">📅</div><div class="empty-title">No interviews booked yet</div><div class="empty-desc">Interviews are auto-booked when a candidate scores ≥ 6</div></div>`;
+        return;
+      }
+
+      const now = new Date();
+      const upcoming = booked.filter(b => new Date(`${b.date}T${b.start_time}`) >= now)
+        .sort((a, b) => `${a.date}T${a.start_time}` < `${b.date}T${b.start_time}` ? -1 : 1);
+      const past = booked.filter(b => new Date(`${b.date}T${b.start_time}`) < now)
+        .sort((a, b) => `${a.date}T${a.start_time}` > `${b.date}T${b.start_time}` ? -1 : 1);
+
+      function renderGroup(label, items) {
+        if (!items.length) return '';
+        return `
+      <div style="padding:10px 16px 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-muted)">${label}</div>
+      ${items.map(b => {
+          const statusCls = b.call_completed ? 'bs-completed' : b.call_triggered ? 'bs-triggered' : 'bs-pending';
+          const statusLabel = b.call_completed ? 'Completed' : b.call_triggered ? 'In Progress' : 'Scheduled';
+          return `<div class="timeline-row">
+          <div class="booking-status-dot ${statusCls}"></div>
+          <div style="flex:1">
+            <div style="font-weight:600;font-size:14px">${b.candidate_name}</div>
+            <div class="text-xs text-muted">${b.position}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:13px;font-weight:500">${b.date}</div>
+            <div class="text-xs text-muted">${b.start_time} – ${b.end_time}</div>
+          </div>
+          <span class="badge ${b.call_completed ? 'badge-success' : b.call_triggered ? 'badge-info' : 'badge-warning'}">${statusLabel}</span>
+          ${!b.call_triggered ? `<button class="btn btn-secondary btn-sm" onclick="triggerNow('${b.id}')">▶ Call Now</button>` : ''}
+        </div>`;
+        }).join('')}`;
+      }
+
+      list.innerHTML = renderGroup('Upcoming', upcoming) + renderGroup('Past', past);
+    }
+
+    async function triggerNow(bookingId) {
+      const btn = event.target;
+      btn.disabled = true; btn.textContent = '📞 Calling...';
+      try {
+        const r = await API.post(`/api/scheduler/trigger-now/${bookingId}`, {});
+        toast('Call triggered! Transcript will appear in Call Results.', 'success');
+        loadBooked();
+        setTimeout(() => { switchTab('calls'); loadCallResults(); }, 2000);
+      } catch (e) {
+        toast('Call trigger failed: ' + e.message, 'error');
+        btn.disabled = false; btn.textContent = '▶ Call Now';
+      }
+    }
+
+    // ── Call Results ──────────────────────────────────────────────────────────────
+    async function loadCallResults() {
+      const completed = await API.get('/api/dashboard/completed-calls');
+      const grid = document.getElementById('callResultsGrid');
+
+      if (!completed.length) {
+        grid.innerHTML = `<div class="empty-state"><div class="empty-icon">📞</div><div class="empty-title">No completed calls yet</div><div class="empty-desc">Results appear here after automated interview calls finish</div></div>`;
+        return;
+      }
+
+      grid.innerHTML = completed.map(c => {
+        const name = candidateName(c);
+        const score = c.fit_score?.overall || 0;
+        const callScore = c.overall_behavior_score ?? c.call_score ?? score;
+        const delta = callScore - score;
+        const rawSummary = c.conversation_summary || '';
+        const summary = rawSummary.replace(/^ravdess\s+result\s*=.*$/gmi, '').trim();
+        const transcript = c.conversation_text || '';
+        const recordingUrl = c.recording_url || '';
+        const duration = c.call_duration_seconds || 0;
+
+        // Format transcript with coloring
+        const formattedTranscript = transcript
+          .replace(/^Agent: (.+)/gm, '<div><span class="transcript-agent">Agent:</span> $1</div>')
+          .replace(/^Candidate: (.+)/gm, '<div><span class="transcript-user">Candidate:</span> $1</div>');
+
+        const deltaHtml = delta > 0
+          ? `<span class="score-delta score-up">↑ +${delta} after call</span>`
+          : delta < 0
+            ? `<span class="score-delta" style="background:rgba(244,63,94,0.1);color:var(--rose)">↓ ${delta} after call</span>`
+            : `<span class="score-delta score-same">→ Unchanged</span>`;
+
+        return `<div class="call-card">
+      <div class="call-card-header">
+        <div class="profile-avatar" style="width:44px;height:44px;font-size:17px">${initials(name)}</div>
+        <div style="flex:1">
+          <div style="font-weight:600;font-size:15px">${name}</div>
+          <div class="text-sm text-muted">${c.selected_position?.position_name || '—'} · ${c.interview_date || '—'} ${c.interview_time || ''}</div>
+        </div>
+        <div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          ${renderScore(callScore)}
+          ${deltaHtml}
+        </div>
+        <span class="badge badge-success">✓ Completed</span>
+      </div>
+      <div class="call-card-body">
+
+        ${summary ? `
+        <div class="form-group mb-4">
+          <label>AI Call Summary</label>
+          <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);border-radius:8px;padding:12px;font-size:13px;color:var(--text-secondary);line-height:1.6">${summary}</div>
+        </div>` : ''}
+
+        ${duration ? `<div class="text-xs text-muted mb-4">⏱ Call duration: ${Math.floor(duration / 60)}m ${duration % 60}s</div>` : ''}
+
+        ${recordingUrl ? `
+        <div class="form-group mb-4">
+          <label>Recording</label>
+          <a href="${recordingUrl}" target="_blank" class="btn btn-secondary btn-sm">🎙 Play Recording</a>
+        </div>` : ''}
+
+        ${transcript ? `
+        <div class="form-group">
+          <div class="flex items-center justify-between mb-2">
+            <label style="margin:0">Full Transcript</label>
+            <button class="btn btn-secondary btn-sm" onclick="copyText(\`${transcript.replace(/`/g, '\\`')}\`)">Copy</button>
+          </div>
+          <div class="transcript-box">${formattedTranscript || transcript}</div>
+        </div>` : ''}
+
+      </div>
+    </div>`;
+      }).join('');
+    }
+
+    // ── Scheduler toggle ──────────────────────────────────────────────────────────
+    async function loadSchedulerStatus() {
+      const status = await API.get('/api/scheduler/status');
+      updateSchedulerUI(status.running);
+    }
+
+    async function toggleScheduler() {
+      const r = await API.post('/api/scheduler/toggle', {});
+      updateSchedulerUI(r.running);
+      toast(r.running ? 'Scheduler started' : 'Scheduler paused', 'info');
+    }
+
+    function updateSchedulerUI(running) {
+      const statusEl = document.getElementById('schedulerStatus');
+      const dot = statusEl.querySelector('.status-dot');
+      document.getElementById('schedulerStatusText').textContent = running ? 'Scheduler active' : 'Scheduler paused';
+      document.getElementById('schedulerIcon').textContent = running ? '⏸' : '▶';
+      document.getElementById('schedulerLabel').textContent = running ? 'Scheduler Running' : 'Start Scheduler';
+      dot.style.background = running ? 'var(--emerald)' : 'var(--text-muted)';
+      dot.style.animation = running ? 'pulse 2s infinite' : 'none';
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────────
+    loadSlots();
+    loadSchedulerStatus();
+    setActiveNav();
+
+    // Auto-refresh call results every 30s when on that tab
+    setInterval(() => {
+      if (document.getElementById('tab-calls').classList.contains('active')) loadCallResults();
+      if (document.getElementById('tab-booked').classList.contains('active')) loadBooked();
+    }, 30000);
+
+    async function syncCalls() {
+      const btn = document.getElementById('syncBtn');
+      if (!btn) return;
+      btn.disabled = true;
+      btn.innerHTML = '⏳ Syncing...';
+      try {
+        const r = await API.post('/api/calls/sync', {});
+        toast(`Sync complete! Found ${r.synced} new transcripts.`, 'success');
+        loadCallResults();
+      } catch (e) { toast('Sync failed: ' + e.message, 'error'); }
+      finally { btn.disabled = false; btn.innerHTML = '🔄 Sync Call History'; }
+    }
+  </script>
+</body>
+
+</html>

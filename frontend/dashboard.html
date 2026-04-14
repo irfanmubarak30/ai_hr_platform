@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard · Ligenix HR</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .call-mini-card {
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      border-left: 3px solid var(--emerald);
+    }
+
+    .upcoming-slot {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .emotion-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--emerald);
+    }
+
+    .upcoming-slot:last-child {
+      border-bottom: none;
+    }
+
+    .slot-time-badge {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-bright);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">LX</div>
+        <div>
+          <div class="logo-text">Ligenix HR</div>
+          <div class="logo-sub">Recruitment Platform</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <a href="/" class="nav-item" data-page="dashboard"><svg class="nav-icon" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>Dashboard</a>
+        <a href="/jobs.html" class="nav-item" data-page="jobs"><svg class="nav-icon" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" />
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+          </svg>Job Postings</a>
+        <a href="/candidates.html" class="nav-item" data-page="candidates"><svg class="nav-icon" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+          </svg>Candidates</a>
+        <div class="nav-section-label">Automation</div>
+        <a href="/availability.html" class="nav-item" data-page="availability"><svg class="nav-icon" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+            <path d="m9 16 2 2 4-4" />
+          </svg>Availability & Calls</a>
+        <div class="nav-section-label">Sourcing</div>
+        <a href="/scraped_candidates.html" class="nav-item" data-page="scraped_candidates"><svg class="nav-icon"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>LinkedIn Scraper</a>
+        <div class="nav-section-label">System</div>
+        <a href="/settings.html" class="nav-item" data-page="settings"><svg class="nav-icon" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2" />
+          </svg>Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <div class="status-dot" id="sidebarDot" style="background:var(--text-muted)"></div><span
+            id="sidebarStatusText">Loading...</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div>
+            <div class="page-title">Dashboard</div>
+            <div class="page-subtitle" id="pageSubtitle">Recruitment overview</div>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-secondary" onclick="refreshAll()"><svg width="14" height="14" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <polyline points="23 4 23 10 17 10" />
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+              </svg>Refresh</button>
+            <a href="/jobs.html" class="btn btn-primary"><svg width="14" height="14" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>New Job</a>
+          </div>
+        </div>
+      </div>
+      <div class="page-body">
+        <!-- Stats -->
+        <div class="stats-grid" style="grid-template-columns:repeat(5,1fr)">
+          <div class="stat-card blue">
+            <div class="stat-icon">💼</div>
+            <div class="stat-value" id="stat-jobs">—</div>
+            <div class="stat-label">Open Positions</div>
+          </div>
+          <div class="stat-card amber">
+            <div class="stat-icon">📋</div>
+            <div class="stat-value" id="stat-apps">—</div>
+            <div class="stat-label">Applications</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value" id="stat-shortlisted">—</div>
+            <div class="stat-label">Shortlisted</div>
+          </div>
+          <div class="stat-card violet">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="stat-interviews">—</div>
+            <div class="stat-label">Scheduled Calls</div>
+          </div>
+          <div class="stat-card" style="--gradient:linear-gradient(90deg,var(--emerald),var(--cyan))">
+            <div class="stat-icon" style="background:rgba(16,185,129,0.15);color:var(--emerald)">🎙</div>
+            <div class="stat-value" id="stat-completed">—</div>
+            <div class="stat-label">Calls Completed</div>
+          </div>
+        </div>
+
+        <!-- Status bar -->
+        <div
+          style="display:flex;align-items:center;gap:12px;background:var(--bg-elevated);border-radius:var(--radius);padding:12px 20px;margin-bottom:24px;flex-wrap:wrap">
+          <span
+            style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted)">Auto-pipeline</span>
+          <span style="color:var(--text-muted)">·</span>
+          <span style="font-size:12px;color:var(--text-secondary)">Scheduler <span class="badge"
+              id="schedulerBadge">—</span></span>
+          <span style="color:var(--text-muted)">·</span>
+          <span style="font-size:12px;color:var(--text-secondary)">Email Listener <span class="badge"
+              id="listenerBadge">—</span></span>
+          <a href="/availability.html" class="btn btn-secondary btn-sm" style="margin-left:auto">⚙️ Configure Slots</a>
+        </div>
+
+        <div class="flex gap-4" style="align-items:flex-start">
+          <div style="flex:2;display:flex;flex-direction:column;gap:16px">
+            <!-- Recent Candidates -->
+            <div class="card">
+              <div class="card-header"><span class="card-title">Recent Candidates</span><a href="/candidates.html"
+                  class="btn btn-secondary btn-sm">View All</a></div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Candidate</th>
+                      <th>Position</th>
+                      <th>Score</th>
+                      <th>Status</th>
+                      <th>Interview</th>
+                      <th>Applied</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentTable">
+                    <tr>
+                      <td colspan="6" style="padding:40px;text-align:center">
+                        <div class="loader">
+                          <div class="loader-dot"></div>
+                          <div class="loader-dot"></div>
+                          <div class="loader-dot"></div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Call Results -->
+            <div class="card">
+              <div class="card-header">
+                <span class="card-title">🎙 Latest Interview Call Results</span>
+                <div class="flex gap-2">
+                  <button class="btn btn-secondary btn-sm" onclick="syncCalls()" title="Sync with ElevenLabs">🔄
+                    Sync</button>
+                  <a href="/availability.html" class="btn btn-secondary btn-sm">View All</a>
+                </div>
+              </div>
+              <div id="callResultsPreview" style="padding:16px">
+                <div class="loader" style="display:flex;padding:16px">
+                  <div class="loader-dot"></div>
+                  <div class="loader-dot"></div>
+                  <div class="loader-dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+            <!-- CV Upload -->
+            <div class="card">
+              <div class="card-header"><span class="card-title">Quick CV Upload</span></div>
+              <div class="card-body">
+                <div class="upload-zone" id="uploadZone">
+                  <input type="file" id="cvFile" accept=".pdf">
+                  <div class="upload-icon">📄</div>
+                  <div class="upload-text">Drop CV here or click</div>
+                  <div class="upload-hint">AI scores → interview auto-booked</div>
+                </div>
+                <button class="btn btn-primary mt-4" style="width:100%" id="uploadBtn" onclick="uploadCV()">Process
+                  CV</button>
+                <div id="uploadResult" class="mt-4" style="display:none"></div>
+              </div>
+            </div>
+            <!-- Upcoming -->
+            <div class="card">
+              <div class="card-header"><span class="card-title">📅 Upcoming Interviews</span><a
+                  href="/availability.html" class="btn btn-secondary btn-sm">Manage</a></div>
+              <div id="upcomingList">
+                <div style="padding:20px;text-align:center" class="text-muted text-sm">Loading...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/utils.js"></script>
+  <script>
+    async function loadDashboard() {
+      try {
+        const [stats, recent, upcoming, completed] = await Promise.all([
+          API.get('/api/dashboard/stats'),
+          API.get('/api/dashboard/recent'),
+          API.get('/api/dashboard/upcoming-interviews'),
+          API.get('/api/dashboard/completed-calls')
+        ]);
+
+        animateNumber(document.getElementById('stat-jobs'), stats.total_jobs);
+        animateNumber(document.getElementById('stat-apps'), stats.total_applications);
+        animateNumber(document.getElementById('stat-shortlisted'), stats.shortlisted);
+        animateNumber(document.getElementById('stat-interviews'), upcoming.length);
+        animateNumber(document.getElementById('stat-completed'), completed.length);
+
+        const sr = stats.scheduler_running, lr = stats.email_listener_running;
+        document.getElementById('schedulerBadge').className = `badge ${sr ? 'badge-success' : 'badge-danger'}`;
+        document.getElementById('schedulerBadge').textContent = sr ? '● Active' : '○ Paused';
+        document.getElementById('listenerBadge').className = `badge ${lr ? 'badge-success' : 'badge-warning'}`;
+        document.getElementById('listenerBadge').textContent = lr ? '● Active' : '○ Off';
+        const dot = document.getElementById('sidebarDot');
+        dot.style.background = sr ? 'var(--emerald)' : 'var(--amber)';
+        dot.style.animation = sr ? 'pulse 2s infinite' : 'none';
+        document.getElementById('sidebarStatusText').textContent = sr ? 'Auto-scheduler running' : 'Scheduler paused';
+        document.getElementById('pageSubtitle').textContent = `${stats.total_applications} candidates · ${sr ? 'Auto-scheduler active' : 'Scheduler paused'} · ${new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' })}`;
+
+        // Recent table
+        const tbody = document.getElementById('recentTable');
+        if (!recent.length) {
+          tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state" style="padding:30px"><div class="empty-icon">📭</div><div class="empty-title">No candidates yet</div><div class="empty-desc">Upload a CV or post a job to begin</div></div></td></tr>`;
+        } else {
+          tbody.innerHTML = recent.map(c => {
+            const name = candidateName(c), pos = c.selected_position?.position_name || '—';
+            const score = c.fit_score?.overall || 0, status = c.fit_score?.breakdown?.Status || 'pending';
+            return `<tr>
+          <td><div class="flex items-center gap-2"><div class="profile-avatar" style="width:30px;height:30px;font-size:11px">${initials(name)}</div><div><div class="td-name" style="font-size:13px">${name}</div><div class="td-email">${c.candidate?.email || ''}</div></div></div></td>
+          <td class="text-sm">${pos}</td><td>${renderScore(score)}</td><td>${statusBadge(status)}</td>
+          <td>${c.interview_completed ? '<span class="badge badge-success text-xs">🎙 Done</span>' : c.interview_date ? `<div style="font-size:11px;font-weight:600;color:var(--accent-bright)">${c.interview_date}</div><div style="font-size:10px;color:var(--text-muted)">${c.interview_time || ''}</div>` : '<span class="text-muted text-xs">—</span>'}</td>
+          <td class="text-sm text-muted">${timeAgo(c.created_at)}</td>
+        </tr>`;
+          }).join('');
+        }
+
+        // Upcoming
+        const upEl = document.getElementById('upcomingList');
+        if (!upcoming.length) {
+          upEl.innerHTML = `<div class="empty-state" style="padding:24px 16px"><div class="empty-icon" style="font-size:28px">📅</div><div class="empty-title" style="font-size:14px">No upcoming interviews</div><div class="empty-desc"><a href="/availability.html" style="color:var(--text-accent)">Set availability slots →</a></div></div>`;
+        } else {
+          upEl.innerHTML = upcoming.slice(0, 5).map(b => {
+            const isToday = b.date === new Date().toISOString().split('T')[0];
+            return `<div class="upcoming-slot"><div class="slot-time-badge">${b.start_time}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${b.candidate_name}</div><div class="text-xs text-muted">${b.position} · ${isToday ? '<span style="color:var(--amber)">Today</span>' : b.date}</div></div>${b.call_completed ? '<span class="badge badge-success text-xs">✓</span>' : '<span class="badge badge-info text-xs">Upcoming</span>'}</div>`;
+          }).join('');
+        }
+
+        // Call results
+        const callEl = document.getElementById('callResultsPreview');
+        if (!completed.length) {
+          callEl.innerHTML = `<div class="empty-state" style="padding:20px"><div class="empty-icon" style="font-size:28px">🎙</div><div class="empty-title" style="font-size:13px">No calls completed yet</div><div class="empty-desc">Results appear here after automated interview calls</div></div>`;
+        } else {
+          callEl.innerHTML = `<div style="display:flex;flex-direction:column;gap:12px;padding:4px">` + completed.slice(0, 3).map(c => {
+            const name = candidateName(c), callScore = c.overall_behavior_score ?? c.call_score ?? c.fit_score?.overall ?? 0;
+            const rawSummary = c.conversation_summary || 'No summary available';
+            const summary = rawSummary.replace(/^ravdess\s+result\s*=.*$/gmi, '').trim();
+            
+            return `<div class="call-mini-card">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <div class="profile-avatar" style="width:30px;height:30px;font-size:11px">${initials(name)}</div>
+                  <div>
+                    <div style="font-size:13px;font-weight:600">${name}</div>
+                    <div class="text-xs text-muted">${c.interview_date || '—'} · ${c.selected_position?.position_name || '—'}</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  ${renderScore(callScore)}
+                  ${c.recording_url ? `<a href="${c.recording_url}" target="_blank" class="btn btn-secondary btn-sm" style="padding:3px 8px" title="Listen to recording">🎧</a>` : ''}
+                </div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;font-style:italic;background:rgba(255,255,255,0.03);padding:8px;border-radius:4px;border-left:2px solid var(--emerald);white-space:pre-line">
+                ${summary}
+              </div>
+            </div>`;
+          }).join('') + `</div>`;
+        }
+      } catch (e) { console.error(e); toast('Failed to load dashboard', 'error'); }
+    }
+
+    async function uploadCV() {
+      const file = document.getElementById('cvFile').files[0];
+      if (!file) { toast('Please select a PDF', 'warning'); return; }
+      const btn = document.getElementById('uploadBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<div class="loader"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div> Analyzing...';
+      const fd = new FormData(); fd.append('cv', file);
+      try {
+        const r = await API.postForm('/api/candidates/upload', fd);
+        const c = r.candidate, status = c?.fit_score?.breakdown?.Status, name = candidateName(c || {});
+        const booking = r.auto_booking;
+        const resultEl = document.getElementById('uploadResult');
+        resultEl.style.display = 'block';
+        resultEl.innerHTML = `<div style="background:var(--bg-elevated);border-radius:var(--radius);padding:14px"><div class="flex items-center justify-between mb-2"><strong>${name}</strong>${statusBadge(status)}</div><div class="text-sm text-muted">Score: ${c?.fit_score?.overall}/10 · ${c?.selected_position?.position_name || '—'}</div>${booking ? `<div style="margin-top:8px;padding:8px;background:rgba(16,185,129,0.1);border-radius:6px;font-size:12px;color:var(--emerald)">📅 Auto-booked: <strong>${booking.date}</strong> at <strong>${booking.start_time}</strong><br><span style="font-size:11px;color:var(--text-muted)">ElevenLabs call fires automatically at interview time</span></div>` : status === 'appoint' ? `<div style="margin-top:8px;font-size:12px;color:var(--amber)">⚠️ No free slots — <a href="/availability.html" style="color:var(--text-accent)">add availability slots</a></div>` : ''}</div>`;
+        toast(`${name} → ${status === 'appoint' ? `✅ Shortlisted${booking ? ' & interview scheduled' : ''}` : '❌ Rejected'}`, status === 'appoint' ? 'success' : 'info');
+        loadDashboard();
+      } catch (e) { toast('Processing failed: ' + e.message, 'error'); }
+      finally { btn.disabled = false; btn.innerHTML = 'Process CV'; }
+    }
+
+    function refreshAll() { loadDashboard(); toast('Refreshed', 'info', 1500); }
+
+    async function syncCalls() {
+      toast('Syncing with ElevenLabs...', 'info');
+      try {
+        const r = await API.post('/api/calls/sync', {});
+        toast(`Sync complete! ${r.synced} items updated.`, 'success');
+        loadDashboard();
+      } catch (e) { toast('Sync failed: ' + e.message, 'error'); }
+    }
+
+    const zone = document.getElementById('uploadZone');
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); document.getElementById('cvFile').files = e.dataTransfer.files; });
+
+    loadDashboard();
+    setActiveNav();
+    setInterval(loadDashboard, 30000);
+  </script>
+</body>
+
+</html>

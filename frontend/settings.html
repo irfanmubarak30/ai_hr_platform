@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings · Ligenix HR</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">LX</div>
+      <div><div class="logo-text">Ligenix HR</div><div class="logo-sub">Recruitment Platform</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a href="/" class="nav-item" data-page="dashboard"><svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a>
+      <a href="/jobs.html" class="nav-item" data-page="jobs"><svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Job Postings</a>
+      <a href="/candidates.html" class="nav-item" data-page="candidates"><svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Candidates</a>
+      <div class="nav-section-label">Sourcing</div>
+      <a href="/scraped_candidates.html" class="nav-item" data-page="scraped_candidates"><svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>LinkedIn Scraper</a>
+      <div class="nav-section-label">Scheduling</div>
+      <a href="/schedule_interview.html" class="nav-item" data-page="schedule_interview"><svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule Interview</a>
+      <div class="nav-section-label">System</div>
+      <a href="/settings.html" class="nav-item" data-page="settings"><svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <div class="page-header">
+      <div class="page-header-inner">
+        <div>
+          <div class="page-title">Settings</div>
+          <div class="page-subtitle">Configure API credentials and platform options</div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary" onclick="saveSettings()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13"/><polyline points="7 3 7 8 15 8"/></svg>
+            Save Settings
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="flex gap-4" style="align-items:flex-start">
+        <div style="flex:2;display:flex;flex-direction:column;gap:20px">
+
+          <!-- AI APIs -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🤖 AI Model APIs</span>
+              <span class="badge badge-info text-xs">Required</span>
+            </div>
+            <div class="card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Google Gemini API Key</label>
+                  <input type="password" id="gemini_api_key" placeholder="AIza...">
+                  <span class="text-xs text-muted">Get from <a href="https://makersuite.google.com" target="_blank" style="color:var(--text-accent)">Google AI Studio</a></span>
+                </div>
+                <div class="form-group">
+                  <label>Groq API Key</label>
+                  <input type="password" id="groq_api_key" placeholder="gsk_...">
+                  <span class="text-xs text-muted">Get from <a href="https://console.groq.com" target="_blank" style="color:var(--text-accent)">console.groq.com</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Services -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">☁️ Google Services</span>
+              <span class="badge badge-warning text-xs">Service Account Required</span>
+            </div>
+            <div class="card-body">
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label>Google Sheets ID</label>
+                  <input type="text" id="google_sheets_id" placeholder="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms">
+                  <span class="text-xs text-muted">The ID from your Google Sheet URL</span>
+                </div>
+                <div class="form-group full">
+                  <label>Google Drive Folder ID</label>
+                  <input type="text" id="google_drive_folder_id" placeholder="1vwsGBD95HCcCcC4JD-XHA76_NtK36dlL">
+                  <span class="text-xs text-muted">The folder ID where CVs will be uploaded</span>
+                </div>
+              </div>
+              <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:12px;color:var(--amber)">
+                ⚠️ Place credential JSON files in the <code style="font-family:monospace;background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px">credentials/</code> folder:
+                gmail_credentials.json, drive_credentials.json, sheets_credentials.json, calendar_credentials.json
+              </div>
+            </div>
+          </div>
+
+          <!-- OAuth2 (Personal Gmail) -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🔐 OAuth2 Setup (Personal Gmail)</span>
+              <span class="badge badge-warning text-xs">Alternative</span>
+            </div>
+            <div class="card-body">
+              <p class="text-sm text-muted mb-4">Use your personal Gmail account instead of Google Workspace service accounts.</p>
+              <div id="oauth2Status" style="background:var(--bg-elevated);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                <div class="flex items-center gap-2">
+                  <div class="status-dot" id="oauth2Dot" style="background:var(--text-muted)"></div>
+                  <span class="text-sm" id="oauth2Text">Not configured</span>
+                </div>
+              </div>
+              <button class="btn btn-secondary" id="oauth2Btn" onclick="setupOAuth2()" style="width:100%">
+                Setup OAuth2 Authorization
+              </button>
+              <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:12px;color:var(--blue)">
+                <strong>📝 Instructions:</strong><br>
+                1. Place OAuth2 credentials file at <code style="font-family:monospace;background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px">credentials/oauth2_credentials.json</code><br>
+                2. Add <code style="font-family:monospace;background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px">USE_OAUTH2=true</code> to .env file<br>
+                3. Click the button above to authorize your Gmail account
+              </div>
+            </div>
+          </div>
+
+          <!-- Apify -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🔍 Apify LinkedIn Scraper</span>
+              <span class="badge badge-info text-xs">Optional</span>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label>Apify API Token</label>
+                <input type="password" id="apify_api_token" placeholder="apify_api_...">
+                <span class="text-xs text-muted">Get from <a href="https://console.apify.com/account/integrations" target="_blank" style="color:var(--text-accent)">Apify Console</a> · Without this, demo data is used</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ElevenLabs -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📞 ElevenLabs AI Calls</span>
+              <span class="badge badge-info text-xs">Optional</span>
+            </div>
+            <div class="card-body">
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label>ElevenLabs API Key</label>
+                  <input type="password" id="elevenlabs_api_key" placeholder="sk_...">
+                </div>
+                <div class="form-group">
+                  <label>Agent ID</label>
+                  <input type="text" id="elevenlabs_agent_id" placeholder="agent_01...">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number ID</label>
+                  <input type="text" id="elevenlabs_phone_id" placeholder="phnum_...">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+
+          <!-- Company Settings -->
+          <div class="card">
+            <div class="card-header"><span class="card-title">🏢 Company Info</span></div>
+            <div class="card-body flex-col gap-3">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="company_name" placeholder="Ligenix">
+              </div>
+              <div class="form-group">
+                <label>Careers Email</label>
+                <input type="email" id="company_email" placeholder="careers@ligenix.com">
+              </div>
+              <div class="form-group">
+                <label>Recruiter Name</label>
+                <input type="text" id="recruiter_name" placeholder="Lena Babu">
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Listener -->
+          <div class="card">
+            <div class="card-header"><span class="card-title">📧 Email Listener</span></div>
+            <div class="card-body">
+              <p class="text-sm text-muted mb-4">Automatically check inbox every minute for CV applications.</p>
+              <div id="listenerStatus" style="background:var(--bg-elevated);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                <div class="flex items-center gap-2">
+                  <div class="status-dot" id="listenerDot" style="background:var(--text-muted)"></div>
+                  <span class="text-sm" id="listenerText">Inactive</span>
+                </div>
+              </div>
+              <button class="btn btn-secondary" id="listenerBtn" onclick="toggleListener()" style="width:100%">
+                Start Email Listener
+              </button>
+            </div>
+          </div>
+
+          <!-- Integration Status -->
+          <div class="card">
+            <div class="card-header"><span class="card-title">Integration Status</span></div>
+            <div class="card-body flex-col gap-2">
+              <div id="statusList">
+                <div class="flex items-center justify-between" style="padding:8px 0;border-bottom:1px solid var(--border)">
+                  <span class="text-sm">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/utils.js"></script>
+<script>
+let currentSettings = {};
+
+async function loadSettings() {
+  try {
+    currentSettings = await API.get('/api/settings');
+    
+    // Fill fields
+    const fields = ['gemini_api_key','groq_api_key','apify_api_token','elevenlabs_api_key',
+                    'elevenlabs_agent_id','elevenlabs_phone_id','google_sheets_id',
+                    'google_drive_folder_id','company_email','company_name','recruiter_name'];
+    fields.forEach(f => {
+      const el = document.getElementById(f);
+      if (el && currentSettings[f]) el.value = currentSettings[f];
+    });
+
+    // Integration status
+    const integrations = [
+      { name: 'Gemini AI', key: 'gemini_api_key', icon: '🤖' },
+      { name: 'Groq AI', key: 'groq_api_key', icon: '🧠' },
+      { name: 'Google Sheets', key: 'google_sheets_id', icon: '📊' },
+      { name: 'Apify LinkedIn', key: 'apify_api_token', icon: '🔍' },
+      { name: 'ElevenLabs', key: 'elevenlabs_api_key', icon: '📞' },
+    ];
+
+    document.getElementById('statusList').innerHTML = integrations.map(int => {
+      const configured = currentSettings[int.key] && currentSettings[int.key] !== '';
+      return `<div class="flex items-center justify-between" style="padding:8px 0;border-bottom:1px solid var(--border)">
+        <span class="text-sm">${int.icon} ${int.name}</span>
+        ${configured ? '<span class="badge badge-success text-xs">✓ Set</span>' : '<span class="badge badge-danger text-xs">Not set</span>'}
+      </div>`;
+    }).join('');
+
+    // Listener status
+    updateListenerUI(currentSettings.email_listener_active);
+  } catch(e) {
+    toast('Failed to load settings', 'error');
+  }
+}
+
+async function saveSettings() {
+  const data = {};
+  const fields = ['gemini_api_key','groq_api_key','apify_api_token','elevenlabs_api_key',
+                  'elevenlabs_agent_id','elevenlabs_phone_id','google_sheets_id',
+                  'google_drive_folder_id','company_email','company_name','recruiter_name'];
+  fields.forEach(f => {
+    const el = document.getElementById(f);
+    if (el) data[f] = el.value;
+  });
+
+  try {
+    const result = await API.post('/api/settings', data);
+    toast(result.message || 'Settings saved!', 'success');
+    loadSettings();
+  } catch(e) {
+    toast('Failed to save: ' + e.message, 'error');
+  }
+}
+
+async function toggleListener() {
+  try {
+    const result = await API.post('/api/email-listener/toggle', {});
+    updateListenerUI(result.active);
+    toast(result.active ? 'Email listener started' : 'Email listener stopped', 'info');
+  } catch(e) {
+    toast('Failed to toggle listener', 'error');
+  }
+}
+
+function updateListenerUI(active) {
+  const dot = document.getElementById('listenerDot');
+  const text = document.getElementById('listenerText');
+  const btn = document.getElementById('listenerBtn');
+  
+  if (active) {
+    dot.style.background = 'var(--emerald)';
+    dot.style.animation = 'pulse 2s infinite';
+    text.textContent = 'Active — checking every minute';
+    btn.textContent = 'Stop Email Listener';
+    btn.className = 'btn btn-danger';
+  } else {
+    dot.style.background = 'var(--text-muted)';
+    dot.style.animation = 'none';
+    text.textContent = 'Inactive';
+    btn.textContent = 'Start Email Listener';
+    btn.className = 'btn btn-secondary';
+  }
+  btn.style.width = '100%';
+}
+
+async function setupOAuth2() {
+  try {
+    const response = await API.get('/api/oauth2/setup');
+    if (response.error) {
+      toast('OAuth2 setup error: ' + response.message, 'error');
+      return;
+    }
+    
+    // Open authorization URL in new window
+    window.open(response.auth_url, '_blank', 'width=800,height=600');
+    toast('Authorization page opened. Please sign in with your Gmail account.', 'info');
+  } catch(e) {
+    toast('Failed to setup OAuth2: ' + e.message, 'error');
+  }
+}
+
+async function updateOAuth2Status() {
+  try {
+    const status = await API.get('/api/oauth2/status');
+    const dot = document.getElementById('oauth2Dot');
+    const text = document.getElementById('oauth2Text');
+    const btn = document.getElementById('oauth2Btn');
+    
+    if (status.oauth2_active) {
+      dot.style.background = 'var(--emerald)';
+      text.textContent = 'Active — Using OAuth2';
+      btn.textContent = 'Re-authorize OAuth2';
+      btn.className = 'btn btn-secondary';
+    } else if (status.token_exists) {
+      dot.style.background = 'var(--yellow)';
+      text.textContent = 'Token exists (disabled)';
+      btn.textContent = 'Re-authorize OAuth2';
+      btn.className = 'btn btn-secondary';
+    } else {
+      dot.style.background = 'var(--text-muted)';
+      text.textContent = 'Not configured';
+      btn.textContent = 'Setup OAuth2 Authorization';
+      btn.className = 'btn btn-secondary';
+    }
+  } catch(e) {
+    console.log('OAuth2 status check failed (this is normal if not configured)', e);
+  }
+}
+
+loadSettings();
+updateOAuth2Status();
+setActiveNav();
+</script>
+</body>
+</html>

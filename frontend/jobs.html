@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Postings · Ligenix HR</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-mark">LX</div>
+        <div>
+          <div class="logo-text">Ligenix HR</div>
+          <div class="logo-sub">Recruitment Platform</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <a href="/" class="nav-item" data-page="dashboard">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          Dashboard
+        </a>
+        <a href="/jobs.html" class="nav-item" data-page="jobs">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" />
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+          </svg>
+          Job Postings
+        </a>
+        <a href="/candidates.html" class="nav-item" data-page="candidates">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+          </svg>
+          Candidates
+        </a>
+        <div class="nav-section-label">Sourcing</div>
+        <a href="/scraped_candidates.html" class="nav-item" data-page="scraped_candidates">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          LinkedIn Scraper
+        </a>
+        <div class="nav-section-label">Scheduling</div>
+        <a href="/schedule_interview.html" class="nav-item" data-page="schedule_interview">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Schedule Interview
+        </a>
+        <div class="nav-section-label">System</div>
+        <a href="/settings.html" class="nav-item" data-page="settings">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          Settings
+        </a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <div class="page-header">
+        <div class="page-header-inner">
+          <div>
+            <div class="page-title">Job Postings</div>
+            <div class="page-subtitle">Create and manage open positions</div>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-primary" onclick="openModal()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Publish Job
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">All Positions</span>
+            <span id="jobCount" class="text-sm text-muted"></span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Department</th>
+                  <th>Location</th>
+                  <th>Type</th>
+                  <th>Applications</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="jobsTable">
+                <tr>
+                  <td colspan="8" style="padding:40px;text-align:center">
+                    <div class="loader">
+                      <div class="loader-dot"></div>
+                      <div class="loader-dot"></div>
+                      <div class="loader-dot"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Job Modal -->
+  <div class="modal-overlay" id="createModal">
+    <div class="modal" style="max-width:720px">
+      <div class="modal-header">
+        <span class="modal-title">Create Job Posting</span>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Job Title *</label>
+            <input type="text" id="jobTitle" placeholder="e.g. Senior AI Engineer">
+          </div>
+          <div class="form-group">
+            <label>Department *</label>
+            <input type="text" id="jobDept" placeholder="e.g. Engineering">
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="jobLocation" placeholder="e.g. Remote / London, UK">
+          </div>
+          <div class="form-group">
+            <label>Employment Type</label>
+            <select id="jobType">
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Contract</option>
+              <option>Internship</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Min. Experience (years)</label>
+            <input type="number" id="jobExp" placeholder="3" min="0">
+          </div>
+          <div class="form-group">
+            <label>Salary Range</label>
+            <input type="text" id="jobSalary" placeholder="e.g. $80,000 – $120,000">
+          </div>
+          <div class="form-group full">
+            <label>Required Skills (comma-separated)</label>
+            <input type="text" id="jobSkills" placeholder="Python, Machine Learning, LLMs, Docker">
+          </div>
+          <div class="form-group full">
+            <label>Job Description *</label>
+            <textarea id="jobDesc" placeholder="Describe the role, responsibilities, and what you're looking for..."
+              style="min-height:120px"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" id="publishBtn" onclick="publishJob()">
+          🚀 Publish Job
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Modal -->
+  <div class="modal-overlay" id="announcementModal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Job Announcement Generated</span>
+        <button class="modal-close"
+          onclick="document.getElementById('announcementModal').classList.remove('open')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-sm text-muted mb-4">Share this announcement on your social channels or job boards:</p>
+        <div class="announcement-box" id="announcementText">
+          <button class="btn btn-secondary btn-sm announcement-copy"
+            onclick="copyText(document.getElementById('announcementText').innerText)">Copy</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary"
+          onclick="document.getElementById('announcementModal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Poster Modal -->
+  <div class="modal-overlay" id="posterModal">
+    <div class="modal" style="max-width:500px">
+      <div class="modal-header">
+        <span class="modal-title">AI Job Poster</span>
+        <button class="modal-close" onclick="document.getElementById('posterModal').classList.remove('open')">✕</button>
+      </div>
+      <div class="modal-body" style="text-align:center">
+        <div id="posterContainer">
+          <div class="loader" style="padding:40px">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary"
+          onclick="document.getElementById('posterModal').classList.remove('open')">Close</button>
+        <button class="btn btn-primary" id="regenerateBtn">🔄 Regenerate</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/utils.js"></script>
+  <script>
+    let allJobs = [];
+
+    async function loadJobs() {
+      try {
+        allJobs = await API.get('/api/jobs');
+        document.getElementById('jobCount').textContent = `${allJobs.length} total`;
+        renderJobs(allJobs);
+      } catch (e) {
+        toast('Failed to load jobs', 'error');
+      }
+    }
+
+    function renderJobs(jobs) {
+      const tbody = document.getElementById('jobsTable');
+      if (!jobs.length) {
+        tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">💼</div><div class="empty-title">No job postings yet</div><div class="empty-desc">Click "Publish Job" to create your first position</div></div></td></tr>`;
+        return;
+      }
+      tbody.innerHTML = jobs.map(j => `
+    <tr>
+      <td><span class="td-name">${j.title}</span></td>
+      <td class="text-sm">${j.department}</td>
+      <td class="text-sm">${j.location || '—'}</td>
+      <td><span class="badge badge-info text-xs">${j.employment_type}</span></td>
+      <td class="text-sm">${j.applications || 0}</td>
+      <td>${statusBadge(j.status)}</td>
+      <td class="text-sm text-muted">${formatDate(j.created_at)}</td>
+      <td>
+        <div class="flex gap-2">
+          <button class="btn btn-secondary btn-sm" onclick="viewPoster('${j.id}', '${j.poster_url || ''}')" title="AI Poster">🎨 Poster</button>
+          <button class="btn btn-secondary btn-sm" onclick="postToLinkedIn('${j.id}')" title="Post to LinkedIn">🔗 LinkedIn</button>
+          <button class="btn btn-secondary btn-sm" onclick="toggleStatus('${j.id}', '${j.status}')">
+            ${j.status === 'open' ? 'Close' : 'Reopen'}
+          </button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+    }
+
+    function openModal() { document.getElementById('createModal').classList.add('open'); }
+    function closeModal() { document.getElementById('createModal').classList.remove('open'); }
+
+    async function publishJob() {
+      const title = document.getElementById('jobTitle').value.trim();
+      const desc = document.getElementById('jobDesc').value.trim();
+      const dept = document.getElementById('jobDept').value.trim();
+      if (!title || !desc || !dept) { toast('Please fill required fields', 'warning'); return; }
+
+      const btn = document.getElementById('publishBtn');
+      btn.disabled = true; btn.textContent = 'Publishing...';
+
+      try {
+        const result = await API.post('/api/jobs', {
+          title, department: dept,
+          description: desc,
+          skills: document.getElementById('jobSkills').value,
+          min_experience: parseInt(document.getElementById('jobExp').value) || 0,
+          salary_range: document.getElementById('jobSalary').value,
+          location: document.getElementById('jobLocation').value,
+          employment_type: document.getElementById('jobType').value
+        });
+
+        closeModal();
+        toast(`"${title}" published successfully!`, 'success');
+
+        // Show announcement
+        document.getElementById('announcementText').textContent = result.announcement;
+        document.getElementById('announcementModal').classList.add('open');
+
+        loadJobs();
+
+        // Reset form
+        ['jobTitle', 'jobDept', 'jobLocation', 'jobSkills', 'jobSalary', 'jobDesc'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+      } catch (e) {
+        toast('Failed to publish job: ' + e.message, 'error');
+      } finally {
+        btn.disabled = false; btn.innerHTML = '🚀 Publish Job';
+      }
+    }
+
+    async function toggleStatus(id, current) {
+      const newStatus = current === 'open' ? 'closed' : 'open';
+      await API.put(`/api/jobs/${id}/status`, { status: newStatus });
+      toast(`Job ${newStatus}`, 'info');
+      loadJobs();
+    }
+
+    async function viewPoster(id, url) {
+      const modal = document.getElementById('posterModal');
+      const container = document.getElementById('posterContainer');
+      const regenBtn = document.getElementById('regenerateBtn');
+
+      modal.classList.add('open');
+      if (url) {
+        container.innerHTML = `<img src="${url}" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">`;
+      } else {
+        container.innerHTML = `<div class="loader" style="padding:40px"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>`;
+        try {
+          const res = await API.post(`/api/jobs/${id}/poster`, {});
+          if (res.poster_url) {
+            container.innerHTML = `<img src="${res.poster_url}" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">`;
+          } else {
+            container.innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">Generation Timeout</div><div class="empty-desc">AI image took too long. Please try "Regenerate".</div></div>`;
+          }
+          loadJobs();
+        } catch (e) { container.innerHTML = `<p class="text-error">Failed: ${e.message}</p>`; }
+      }
+
+      regenBtn.onclick = async () => {
+        container.innerHTML = `<div class="loader" style="padding:40px"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>`;
+        try {
+          const res = await API.post(`/api/jobs/${id}/poster`, {});
+          container.innerHTML = `<img src="${res.poster_url}" style="width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">`;
+          loadJobs();
+        } catch (e) { toast('Failed to regenerate', 'error'); }
+      };
+    }
+
+    async function postToLinkedIn(id) {
+      toast('Uploading to LinkedIn...', 'info');
+      try {
+        const res = await API.post(`/api/jobs/${id}/linkedin`, {});
+        if (res.status === 'error') {
+          toast('LinkedIn Error: ' + res.message, 'error', 10000);
+        } else {
+          toast('Successfully posted to LinkedIn!', 'success');
+        }
+      } catch (e) {
+        toast('LinkedIn Post Failed: ' + e.message, 'error');
+      }
+    }
+
+    loadJobs();
+    setActiveNav();
+  </script>
+</body>
+
+</html>
