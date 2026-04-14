@@ -1,201 +1,190 @@
-# 🚀 Ligenix AI HR Recruitment Platform
+# 🧠 AI-Driven Recruitment Automation & Decision System
 
-A complete AI-powered HR recruitment automation platform built with Python/Flask and vanilla HTML/CSS/JS.
-
-## Features
-
-| Feature | Description |
-|---|---|
-| 📋 Job Management | Create, publish, and manage job postings with auto-generated announcements |
-| 📧 Email CV Collection | Gmail listener polls inbox every minute for CV submissions |
-| 🤖 AI CV Analysis | Gemini/Groq AI scores candidates 0-10 against job requirements |
-| 📊 Google Sheets | All candidates stored automatically in Google Sheets |
-| 🔍 LinkedIn Scraper | Search LinkedIn via Apify and evaluate scraped profiles |
-| 📅 Interview Scheduling | Google Calendar integration with automatic invites |
-| 📞 AI Voice Calls | ElevenLabs automated calls for appointed candidates |
-| 🎙️ Transcripts | Call transcripts stored in Google Sheets |
+An end-to-end AI-powered system designed to automate candidate evaluation, decision-making, and recruitment workflows using **LLM-based scoring, event-driven pipelines, and multi-source data integration**.
 
 ---
 
-## 🛠 Installation
+## 🧠 System Overview
 
-```bash
-# 1. Clone or download the project
-cd ai_hr_platform
+This system is built as a **real-time decision automation pipeline** that ingests candidate data from multiple sources, processes it through AI models, and executes actions based on intelligent evaluation.
 
-# 2. Install dependencies
-pip install -r requirements.txt
+Unlike traditional HR tools, this platform focuses on:
 
-# 3. Configure environment
-cp .env .env.local
-# Edit .env with your API keys
-
-# 4. Start the server
-python app.py
-```
-
-Open **http://localhost:5000** in your browser.
+* **Automated decision-making**
+* **Real-time event handling**
+* **AI-driven scoring and ranking**
+* **End-to-end workflow orchestration**
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ System Architecture
 
-### Required: AI API (at least one)
+### 🔄 End-to-End Pipeline
 
-| Service | Where to get | .env key |
-|---|---|---|
-| Google Gemini | [makersuite.google.com](https://makersuite.google.com) | `GEMINI_API_KEY` |
-| Groq | [console.groq.com](https://console.groq.com) | `GROQ_API_KEY` |
-
-### Optional: Google Services
-
-**Choose ONE method:**
-
-#### Option 1: Service Account (Google Workspace) - Recommended for organizations
-Place service account JSON credential files in the `credentials/` folder:
-
-```
-credentials/
-  gmail_credentials.json
-  drive_credentials.json
-  sheets_credentials.json
-  calendar_credentials.json
-```
-
-Set these in `.env`:
-```
-GMAIL_CREDENTIALS_FILE=credentials/gmail_credentials.json
-COMPANY_EMAIL=your-workspace-email@yourdomain.com
-GOOGLE_SHEETS_ID=<your-sheet-id>
-GOOGLE_DRIVE_FOLDER_ID=<your-folder-id>
-USE_OAUTH2=false
-```
-
-#### Option 2: OAuth2 (Personal Gmail) - Recommended for individuals
-Follow the [OAuth2 Setup Guide](OAUTH2_SETUP.md) for personal Gmail accounts.
-
-```
-credentials/
-  oauth2_credentials.json    # Download from Google Cloud
-  oauth2_token.json          # Auto-generated after auth
-```
-
-Set these in `.env`:
-```
-USE_OAUTH2=true
-OAUTH2_CREDENTIALS_FILE=credentials/oauth2_credentials.json
-GOOGLE_SHEETS_ID=<your-sheet-id>
-GOOGLE_DRIVE_FOLDER_ID=<your-folder-id>
-```
-
-### Optional: Apify LinkedIn Scraper
-
-```
-APIFY_API_TOKEN=apify_api_...
-```
-
-Without this, demo/mock profiles are used.
-
-### Optional: ElevenLabs AI Calls
-
-```
-ELEVENLABS_API_KEY=sk_...
-ELEVENLABS_AGENT_ID=agent_...
-ELEVENLABS_PHONE_NUMBER_ID=phnum_...
-```
+Email / LinkedIn Input
+→ Data Extraction
+→ Structured Parsing
+→ AI Evaluation
+→ Decision Engine
+→ Storage Layer
+→ Action Triggers (Scheduling / Calls / Notifications)
 
 ---
 
-## 🗂 Project Structure
+## 🧩 Core Components
 
-```
-ai_hr_platform/
-├── app.py                    # Flask application & API routes
-├── backend/
-│   ├── config.py             # Configuration management
-│   ├── job_manager.py        # Job CRUD & announcement generation
-│   ├── cv_parser.py          # PDF parsing with pdfplumber
-│   ├── ai_evaluator.py       # Gemini/Groq candidate scoring
-│   ├── candidates_manager.py # Candidate data management
-│   ├── email_listener.py     # Gmail inbox monitoring
-│   ├── linkedin_scraper.py   # Apify LinkedIn integration
-│   ├── google_sheets_service.py
-│   ├── google_drive_service.py
-│   ├── calendar_service.py   # Google Calendar events
-│   └── call_service.py       # ElevenLabs voice calls
-├── frontend/
-│   ├── dashboard.html        # Overview with stats & quick upload
-│   ├── jobs.html             # Job posting management
-│   ├── candidates.html       # Candidate pipeline with AI scores
-│   ├── scraped_candidates.html # LinkedIn profiles dashboard
-│   ├── schedule_interview.html # Calendar scheduling
-│   └── settings.html         # API credentials & config
-├── static/
-│   ├── css/style.css         # Full design system
-│   └── js/utils.js           # Shared frontend utilities
-├── data/
-│   ├── jobs.json
-│   ├── candidates.json
-│   └── scraped_profiles.json
-├── credentials/              # Google service account files
-├── .env                      # Environment variables
-└── requirements.txt
-```
+### 📥 Data Ingestion Layer
+
+* Gmail listener (polling-based event system)
+* LinkedIn scraping via Apify APIs
+* Handles unstructured inputs (emails, PDFs, profiles)
 
 ---
 
-## 🔄 How It Works
+### 📄 Parsing & Preprocessing Engine
 
-### Email CV Flow
-1. Gmail listener checks inbox every 60 seconds
-2. CV PDF extracted from email attachment
-3. CV uploaded to Google Drive
-4. `pdfplumber` extracts text content
-5. AI (Gemini/Groq) evaluates against all open jobs
-6. Candidate scored 0-10, status = appoint/reject
-7. Record saved to Google Sheets
-8. If appointed → ElevenLabs AI call triggered
-
-### LinkedIn Sourcing Flow
-1. HR enters position, location, experience level
-2. Apify LinkedIn Search API finds matching profiles
-3. Apify Profile Scraper gets full details
-4. AI evaluates each profile against job requirements
-5. Profiles displayed in Scraped Candidates dashboard
-
-### AI Scoring
-- Score ≥ 6 → **Appointed** (Shortlisted)
-- Score < 6 → **Rejected**
-
-Breakdown: Experience + Technical Skills + Achievements + Education
+* PDF parsing using `pdfplumber`
+* Text normalization and structuring
+* Feature extraction (skills, experience, education)
 
 ---
 
-## 🌐 API Endpoints
+### 🤖 AI Evaluation Module
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/dashboard/stats` | Dashboard statistics |
-| GET | `/api/jobs` | List all jobs |
-| POST | `/api/jobs` | Create job posting |
-| GET | `/api/candidates` | List all candidates |
-| POST | `/api/candidates/upload` | Upload & analyze CV |
-| POST | `/api/scraper/search` | Search LinkedIn |
-| GET | `/api/scraper/profiles` | Get scraped profiles |
-| POST | `/api/interviews/schedule` | Schedule interview |
-| GET | `/api/settings` | Get current settings |
-| POST | `/api/settings` | Update settings |
+* LLM-based candidate scoring (Gemini / Groq)
+* Evaluates across:
+
+  * Technical skills
+  * Experience relevance
+  * Achievements
+  * Educational background
+* Outputs structured scores (0–10) with reasoning
 
 ---
 
-## 🎨 Tech Stack
+### 🧠 Decision Engine
 
-- **Backend**: Python 3.11+ · Flask · pdfplumber
-- **Frontend**: Vanilla HTML · CSS · JavaScript
-- **Fonts**: Syne (headings) · DM Sans (body)
-- **AI**: Google Gemini 1.5 Flash · Groq Llama 3.3
-- **Integrations**: Gmail API · Google Drive · Sheets · Calendar · Apify · ElevenLabs
+* Rule-based + AI-assisted decision logic
+* Threshold-based filtering:
+
+  * Score ≥ 6 → shortlisted
+  * Score < 6 → rejected
+* Can be extended to adaptive or learned thresholds
 
 ---
 
-*Built for Ligenix HR Team · Recruiter: Lena Babu*
+### 🔁 Workflow Automation Engine
+
+* Event-triggered execution pipeline
+* Automates:
+
+  * Interview scheduling (Google Calendar)
+  * Candidate notifications
+  * AI voice calls (ElevenLabs)
+* Handles asynchronous workflows
+
+---
+
+### 💾 Storage & Integration Layer
+
+* Google Sheets for structured tracking
+* Google Drive for CV storage
+* Maintains candidate lifecycle data
+
+---
+
+## 📊 System Flow
+
+### 📧 Email-Based Pipeline
+
+1. Gmail listener polls inbox
+2. CV extracted from email
+3. File uploaded to Google Drive
+4. Text extracted using parser
+5. AI evaluates candidate
+6. Score stored in Google Sheets
+7. Decision applied
+8. If shortlisted → interview + AI call triggered
+
+---
+
+### 🔍 LinkedIn Sourcing Pipeline
+
+1. Input: role + location + experience
+2. Apify API fetches candidate profiles
+3. Profile data parsed and structured
+4. AI evaluates candidates
+5. Ranked candidates displayed in dashboard
+
+---
+
+## ⚡ Key Features
+
+* End-to-end recruitment automation
+* AI-driven candidate evaluation (LLMs)
+* Real-time event-based processing
+* Multi-source data ingestion
+* Automated scheduling and communication
+* Voice-based candidate interaction
+* Scalable modular architecture
+
+---
+
+## 🎥 Demo
+
+![Demo](assets/demo.gif)
+
+---
+
+## 🛠 Tech Stack
+
+* **Backend:** Python, Flask
+* **AI Models:** Google Gemini, Groq LLMs
+* **Parsing:** pdfplumber
+* **APIs:** Gmail API, Google Drive, Google Sheets, Apify, ElevenLabs
+* **Automation:** Event-driven workflows
+* **Data:** JSON + Google Sheets
+
+---
+
+## 📡 System Characteristics
+
+* Event-driven architecture
+* Asynchronous workflow execution
+* Modular pipeline design
+* Scalable integration with external APIs
+* Real-time decision processing
+
+---
+
+## 🎯 Applications
+
+* AI-driven decision automation systems
+* Workflow orchestration platforms
+* Enterprise process automation
+* Intelligent candidate evaluation pipelines
+
+---
+
+## 🧠 Key Concepts Demonstrated
+
+* AI-based decision systems
+* Pipeline architecture & orchestration
+* Event-driven automation
+* Multi-source data integration
+* Real-time workflow execution
+* Human-in-the-loop extensibility
+
+---
+
+## 🚀 Possible Extensions
+
+* Replace polling with event streaming (Kafka / Webhooks)
+* Add learning-based ranking models
+* Deploy on distributed infrastructure
+* Integrate real-time dashboards with analytics
+* Optimize latency for large-scale pipelines
+
+---
+
+⭐ *Designed as an intelligent decision-making system rather than a traditional HR application*
