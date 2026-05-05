@@ -1,84 +1,5 @@
 [
   {
-    "id": "9f4460a4-c889-427a-aa48-324776f2bec0",
-    "created_at": "2026-03-16T10:39:20.174842",
-    "source": "email",
-    "cv_url": "https://drive.google.com/file/d/18eZY70H_LfpF_DNNSgQFc-z547Y1xq8R/view?usp=drivesdk",
-    "email_subject": "Need a job",
-    "candidate": {
-      "first_name": "Irfan",
-      "last_name": "Mubarak",
-      "email": "irfanmubarak.k30@gmail.com",
-      "phone": "+917012354318"
-    },
-    "selected_position": {
-      "position_name": "ai intern",
-      "selection_reason": "Irfan's CV is an excellent match for the 'ai intern' position. He is currently pursuing a B.Tech in Artificial Intelligence and Data Science, demonstrating a strong academic background. His technical skills, including Python, LLMs, Computer Vision, YOLO, PyTorch, and LangChain, are directly relevant to the requirements of an AI intern. He also has practical experience through significant projects like TAPACD and AIToolRecommender, and previous hands-on experience as an AI Intern contributing to model development and automation workflows. His profile perfectly aligns with the 'aspired ai students hve a good background in ai' description."
-    },
-    "summary": {
-      "years_experience": 0,
-      "current_role": "AI & Data Science Student",
-      "key_achievements": [
-        "Developed an AI-powered surveillance system (TAPACD) using YOLOv8 and Flask.",
-        "Built a multi-agent AI system (AIToolRecommender) using LLMs and CrewAI.",
-        "Contributed to AI-driven projects as an AI Intern, focusing on model development and automation.",
-        "Led planning and execution of placement activities as Student Placement Co-ordinator."
-      ],
-      "technical_skills": [
-        "Python",
-        "SQL",
-        "JavaScript",
-        "Computer Vision",
-        "NLP",
-        "LLMs",
-        "YOLO",
-        "Transformers",
-        "Prompt Engineering",
-        "n8n",
-        "Workflow Automation",
-        "API Integrations",
-        "HTML",
-        "CSS",
-        "Flask",
-        "PyTorch",
-        "TensorFlow",
-        "OpenCV",
-        "CrewAI",
-        "LangChain",
-        "Git",
-        "GitHub"
-      ],
-      "overall_summary": "Irfan Mubarak is a highly motivated AI & Data Science student with a strong technical foundation and practical experience in machine learning, computer vision, and large language models. He has demonstrated hands-on ability through notable projects and a prior AI internship, showcasing skills in model development, automation, and full-stack application building. His leadership experience as a Student Placement Co-ordinator also highlights strong communication and project execution skills. He is an ideal candidate for an AI intern role seeking an aspiring student with a solid AI background.",
-      "draft_mail": "Dear Irfan Mubarak,\n\nI hope this email finds you well.\n\nFollowing a thorough review of your CV and considering our open positions at RECAP, I am pleased to inform you that your profile has been selected for the AI Intern position.\n\nYour strong academic background in Artificial Intelligence and Data Science, coupled with your impressive technical skills in areas like Computer Vision, LLMs, and Python, along with your practical project experience in developing systems like TAPACD and AIToolRecommender, make you an excellent fit for this role. We were particularly impressed by your previous AI Intern experience and your ability to contribute to real-world applications.\n\nWe believe your skills and aspirations align perfectly with the requirements of our AI Intern program, and we are excited about the potential contributions you could make to our team.\n\nWe will be in touch shortly to discuss the next steps in the onboarding process and provide you with more details regarding your start date and responsibilities. In the meantime, please feel free to reach out if you have any questions.\n\nCongratulations on your selection!\n\nBest regards,\n\nLena Babu\nRecruitment Specialist\nRECAP"
-    },
-    "fit_score": {
-      "overall": 9,
-      "breakdown": {
-        "experience": 9,
-        "technical_skills": 10,
-        "achievements": 9,
-        "education": 10,
-        "Status": "appoint"
-      },
-      "Status": "appoint"
-    },
-    "interview_scheduled": true,
-    "interview_date": "2026-03-16",
-    "interview_time": "14:00",
-    "booking_id": "5541c7fa-8a89-4d23-96e5-ce7a94d4403e",
-    "interview_completed": true,
-    "conversation_id": "conv_8701kkr4k12cfjh8nfaa5r99k1kb",
-    "conversation_text": "Agent: Hello My name is eryn  This is the recruitment assistant For Your interview. Thank you for joining the call. I'd like to ask you a few questions about your background and how you handle different situations in the workplace. Shall we begin?\n\nCandidate: Okay.\n\nAgent: Great. To start, could you please tell me about a time you had to deal with a difficult teammate? What was the situation and how did you handle it?\n\nCandidate: Uh, did you mean by difficult can-- I'm sorry, I'm sorry, I'm very tense. I don't know what I'm doing. Sorry, sorry. Could you please repeat the question, please?\n\nAgent: Of course, I understand. It's completely normal to feel a bit nervous during an interview. Please take a deep breath. The question was: Could you please tell me about a time you had to deal with a difficult teammate? What was the situation and how did you handle it?\n\nCandidate: Yeah, there is a guy in my team, he used to bully me. He was so strong and I am so scared of him. So I usually do whatever he wants to do. He will give me all his works and I had to do that.\n\nAgent: Thank you for sharing that. It sounds like a very challenging situation to be in. Can you tell me more about the specific actions you took to address this bullying behavior and the workload you were given? What was the result of those actions?\n\nCandidate: Well, I informed my manager about his behavior.\n\nAgent: Thank you for...\n\nCandidate: Mm-hmm. And\n\nAgent: And what happened after you informed your manager? What was the outcome of that conversation and the actions taken by your manager?\n\nCandidate: Yeah.\n\nAgent: Can you tell me more...\n\nCandidate: Told me to...\n\nAgent: Please continue, I'm listening.\n\nCandidate: Yeah, he took actions against this person, and he was fired later. Now I'm doing fine in my office. [clearing throat]\n\nAgent: Thank you for sharing that experience. It sounds like you took a brave step by speaking to your manager, and it led to a positive resolution for you.\n\nNow, could you describe a situation where you had to meet a very tight deadline? What was the task, and how did you manage your time and resources to complete it?\n\nCandidate: Well, I have to do this super spastic job, which is to make a bloody computer vision application. And what happened was, like, I only gave him two days and I have to work my mind off for this thing. I'm totally shitted and I'm totally stressed for this piece of garbage. Well, I have to hand my friends, talk about my peers, how to deal with these things. I just, you know, gave this splitting job to everyone. So each and everyone want to do this. So yeah, somehow.I don't know how I did this, but I pulled it off. It was very difficult. Too difficult.\n\nAgent: I understand that you were under a lot of pressure to complete that task. It sounds like a very stressful situation. You mentioned that you involved your peers and delegated parts of the work. Could you tell me more about how you coordinated with your team and what specific actions you took to ensure the project was completed successfully within the two-day timeframe? What was the final result of your efforts?\n\nCandidate: Yeah, well, you know, in our team there's a guy who is super coding. He's so fantastic. He wants to code every time. He's just living for programming. That kind of stuff he does. And then there's a girl, she's, you know, well, good at soft communications, documentation, presentation. So she's so good at that. And there's also this guy, you know, he wants to build UI/UX dashboards. The, um, yeah. He generally creates the websites for us. So I just split these parts which-Okay ... whichever they are best at, I give the coding parts to the coder, documentation to this girl, and website to this guy. So, yeah. And I was the managing the product architecture. So finally we pulled this off, and it's come fine. Hopefully. Yeah.\n\nAgent: Thank you for explaining how you divided the tasks based on your teammates' strengths. It sounds like you effectively leveraged their skills to manage the project. You mentioned you were managing the product architecture. Could you elaborate on your specific role in the product architecture and how that contributed to the successful completion of the project within the tight deadline?\n\nCandidate: Well, how to starting from receiving this request from the customer, that was the starting of the project. I, uh, I am designing to, uh, close how we pull this off, how we work in these things, and including the design architecture, how should go. So from that to the end, I will be designing the things, how to make things, what changes should I do, what things I should include in this project, how should be the output, and how to satisfy the customer. Yeah, and at the end is so cool with that.\n\nAgent: Thank you for clarifying your role in managing the product architecture. It sounds like you were responsible for the overall design and strategy from the initial customer request through to the final delivery, ensuring customer satisfaction.\n\nNow, let's move on to another situation. How do you handle feedback that you disagree with? Can you give me an example?\n\nCandidate: If someone has this feedback that I can work with, I will do to make a demo. Like, instead of just telling what he wants to do, I want to visualize it so I can actually check whether it's good or bad, or, like, comparing to what we actually have, we can compare with that. Like, if it's good, it's good. Yeah, it's okay. So I have a good-- better things. It's very cool for us. But in the other case, I can make you understand why I reject this feedback and I don't take it positively.\n\nAgent: Thank you for explaining your approach. So, if you receive feedback you disagree with, you prefer to create a demo or a visualization to better understand and evaluate it, and then communicate your reasoning if you decide not to implement it.\n\nCould you give me a specific example of a time you used this approach? Perhaps a situation where you received feedback, created a demo to evaluate it, and then had a discussion about whether to incorporate it or not? What was the outcome of that discussion?\n\nCandidate: Yeah, well, actually, yeah, there is an example. Mm, recently I had to build a UIUX web for the website. I am handling the website, so it looks out and the whole stuff. And there is a teammate, he like to do stuff like this. And he come up with me, like, \"This is not good.\" Like, \"There is something you haven't had. There's something missing.\" So I just told him, \"Why don't you create your own website? Like, maybe for the same purpose or a demo one, simple task, and show it to me.\" So when he does that, yeah, he actually had a point.His implementation was actually better, so I accepted it since I have the proof which is better. And, you know, we are all working for the overall better for the project, not our personal steps, you know, right? So yeah, that's how we end it.\n\nAgent: That's a great example, thank you for sharing it. It clearly illustrates how you use visualization and collaboration to evaluate feedback. It sounds like in this instance, creating a demo helped you both realize that your teammate's suggestion led to a better outcome for the project.\n\nWe're nearing the end of our conversation. Do you have any questions for me about the role or the company?\n\nCandidate: I don't have any questions. In case you don't have any bullets like the one I mentioned. So after that, we're cool. Yeah.\n\nAgent: Thank you for your time today. I appreciate you sharing your experiences with me. We will be in touch via email regarding the next steps in the hiring process. Have a great day!\n\nCandidate: Goodbye.\n\nAgent: Goodbye.",
-    "conversation_summary": "ravdess result=happy\nThe candidate exhibits an underlying vocal tone identified as \"happy\" (Confidence: 1.00) throughout the interview, suggesting an inherent positive disposition or a high-energy communication style, even when recounting highly stressful or challenging experiences. While initially expressing explicit nervousness and tension, the candidate quickly became more comfortable, demonstrating a willingness to candidly share personal and professional anecdotes.\n\nIn addressing past workplace challenges, the candidate first displayed an initial passive approach to a bullying situation but ultimately exhibited courage and self-advocacy by escalating the issue to management, resulting in a positive resolution. When faced with a demanding project under a very tight deadline, the candidate openly communicated significant stress through vivid and emotive language. However, they effectively transformed this pressure into productive action, showcasing strong leadership by strategically delegating tasks based on team members' specific strengths (coding, documentation, UI/UX). The candidate successfully managed the product architecture from initial customer request through to final delivery, ensuring the project's successful completion and customer satisfaction. This combination of an underlying positive vocal tone with proactive problem-solving and effective team coordination points to a resilient individual capable of navigating high-pressure situations and leading teams to successful outcomes, despite admitted stress.\n...............................\noverall behaviour score=8",
-    "recording_url": "",
-    "call_duration_seconds": 486,
-    "interview_status": "completed",
-    "predicted_emotion": "happy",
-    "behavior_confidence": 0.9995619573956196,
-    "behavioral_summary_rich": "ravdess result=happy\nThe candidate exhibits an underlying vocal tone identified as \"happy\" (Confidence: 1.00) throughout the interview, suggesting an inherent positive disposition or a high-energy communication style, even when recounting highly stressful or challenging experiences. While initially expressing explicit nervousness and tension, the candidate quickly became more comfortable, demonstrating a willingness to candidly share personal and professional anecdotes.\n\nIn addressing past workplace challenges, the candidate first displayed an initial passive approach to a bullying situation but ultimately exhibited courage and self-advocacy by escalating the issue to management, resulting in a positive resolution. When faced with a demanding project under a very tight deadline, the candidate openly communicated significant stress through vivid and emotive language. However, they effectively transformed this pressure into productive action, showcasing strong leadership by strategically delegating tasks based on team members' specific strengths (coding, documentation, UI/UX). The candidate successfully managed the product architecture from initial customer request through to final delivery, ensuring the project's successful completion and customer satisfaction. This combination of an underlying positive vocal tone with proactive problem-solving and effective team coordination points to a resilient individual capable of navigating high-pressure situations and leading teams to successful outcomes, despite admitted stress.\n...............................\noverall behaviour score=8",
-    "updated_at": "2026-03-16T10:43:37.834435"
-  },
-  {
     "id": "6bd587c8-ca1a-4f72-a3de-6c790aa3b9b2",
     "created_at": "2026-03-16T14:42:29.104645",
     "source": "email",
@@ -157,5 +78,72 @@
     "behavioral_summary_rich": "The behavioral interview began with a welcoming introduction, including an explanation of the STAR method. When asked about working with a difficult teammate, the candidate gave a brief, positive overview of intervening to ensure project understanding, particularly concerning code structure. The agent then encouraged further detail regarding their specific role, actions, and the final outcome.\noverall behaviour score=6",
     "overall_behavior_score": 6,
     "updated_at": "2026-03-16T14:50:55.800274"
+  },
+  {
+    "id": "98669e20-0ad2-4b9a-8604-69970620dc39",
+    "created_at": "2026-05-05T12:14:51.763628",
+    "source": "email",
+    "cv_url": "https://drive.google.com/file/d/1YIh12bMF0rOkSkKs85K0NSq8JdSaSViC/view?usp=drivesdk",
+    "email_subject": "sirr give me jobbbb",
+    "candidate": {
+      "first_name": "Irfan",
+      "last_name": "Mubarak",
+      "email": "irfanmubarak.k30@gmail.com",
+      "phone": "+917012354318"
+    },
+    "selected_position": {
+      "position_name": "ai intern",
+      "selection_reason": "The candidate is an AI & Data Science student with a very strong background in AI, demonstrated through extensive technical skills (Computer Vision, RAG Pipelines, LLM Orchestration), impactful projects (Real-Time Multi-Modal Conversational AI System, TAPACD), and relevant academic pursuits. This profile perfectly aligns with the requirement for an 'aspired ai students hve a good background in ai'. The 'operation manager' role requires experienced management, which the candidate does not possess."
+    },
+    "summary": {
+      "years_experience": 0,
+      "current_role": "AI & Data Science student",
+      "key_achievements": [
+        "Developed a stateful, event-driven pipeline for multi-modal interaction with sub-second latency.",
+        "Built a real-time surveillance system utilizing custom-trained YOLOv8 for edge-case object detection.",
+        "Designed a collaborative system using specialized agents to solve complex research and analysis tasks.",
+        "Engineered an end-to-end automation pipeline featuring multi-source data ingestion and AI evaluation."
+      ],
+      "technical_skills": [
+        "Computer Vision (YOLOv8)",
+        "RAG Pipelines",
+        "Secure AI Integration",
+        "LLM Orchestration",
+        "CrewAI",
+        "LangChain",
+        "FastAPI",
+        "PyTorch",
+        "Linux",
+        "Git"
+      ],
+      "overall_summary": "Irfan Mubarak is a highly promising AI & Data Science student with a robust foundational and practical understanding of artificial intelligence, particularly in areas such as computer vision, RAG pipelines, and multi-agent systems. His impressive portfolio of projects showcases hands-on experience in developing and implementing complex real-time AI solutions and automation workflows. While his formal professional experience is limited to a brief AI Intern role, his technical depth, significant project achievements, and directly relevant academic background make him an outstanding candidate for an AI Intern position.",
+      "draft_mail": "Subject: Update on your application for the AI Intern position at RECAP\n\nDear Irfan Mubarak,\n\nThank you for your interest in the AI Intern position at RECAP and for submitting your application.\n\nWe were highly impressed by your qualifications, particularly your strong background in AI & Data Science, your technical proficiency in areas like Computer Vision, RAG Pipelines, and LLM Orchestration, and the impactful projects you've undertaken, such as the Real-Time Multi-Modal Conversational AI System and TAPACD. Your skills and achievements align perfectly with what we are looking for in an AI Intern.\n\nWe are pleased to inform you that your application has been successful, and we would like to invite you to the next stage of our recruitment process. Our team will be in touch shortly to discuss the next steps, including scheduling an interview.\n\nIn the meantime, please let us know if you have any questions.\n\nWe look forward to speaking with you.\n\nBest regards,\n\nLena Babu\nRecruiter\nRECAP"
+    },
+    "fit_score": {
+      "overall": 8,
+      "breakdown": {
+        "experience": 7,
+        "technical_skills": 9,
+        "achievements": 9,
+        "education": 9,
+        "Status": "appoint"
+      }
+    },
+    "interview_scheduled": true,
+    "interview_date": "2026-05-05",
+    "interview_time": "14:00",
+    "booking_id": "a6c1faac-1265-4e8d-be85-107721b536c1",
+    "interview_completed": true,
+    "conversation_id": "conv_9501kqve90ysfwgt1700hf0tsf96",
+    "conversation_text": "Agent: Hello My name is eryn  This is the recruitment assistant For Your interview. Thank you for joining the call. I'd like to ask you a few questions about your background and how you handle different situations in the workplace. Shall we begin?\n\nCandidate: Blah, blah, blah, blah, blah, blah.",
+    "conversation_summary": "The AI recruitment assistant initiated the interview with a welcoming demeanor, outlining the purpose of the call. Unfortunately, the candidate responded uncooperatively, bringing the conversation to an immediate halt.\noverall behaviour score=1",
+    "recording_url": "",
+    "call_duration_seconds": 16,
+    "interview_status": "completed",
+    "predicted_emotion": "happy",
+    "behavior_confidence": 0.9490744785355395,
+    "behavioral_summary_rich": "The AI recruitment assistant initiated the interview with a welcoming demeanor, outlining the purpose of the call. Unfortunately, the candidate responded uncooperatively, bringing the conversation to an immediate halt.\noverall behaviour score=1",
+    "overall_behavior_score": 1,
+    "updated_at": "2026-05-05T12:27:19.567867"
   }
 ]

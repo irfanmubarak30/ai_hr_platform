@@ -3076,5 +3076,528 @@
         }
       }
     }
+  },
+  {
+    "id": "889f1558-5ebf-4ba9-8f82-2c305856b0b2",
+    "created_at": "2026-05-03T10:11:45.506597",
+    "source": "linkedin",
+    "name": "Alex Shabu",
+    "first_name": "Alex",
+    "last_name": "Shabu",
+    "headline": "Ex-Intern @Hitachi Solutions | C# | ASP.NET Core | React | Redux | SQLServer | Skilled in C, C++, JavaScript, Python | Open to Opportunities in Software Development",
+    "location": "Kochi, Kerala, India",
+    "about": "As a recent BTech/BE graduate in Computer Science and Engineering, I bring a strong foundation in both front-end and back-end development, with proficiency in C and C++. My academic journey has equipped me with the technical expertise and problem-solving skills essential for the dynamic field of software development.\n\nBeyond my formal education, I've honed my skills through various projects and practical experiences. I am passionate about leveraging my diverse skill set to contribute to innovative solutions and drive impactful results within my software team.\n\nI thrive in collaborative environments where continuous learning and adaptation are key. My commitment to staying updated with the latest industry trends and technologies ensures that I am always ready to tackle new challenges and deliver high-quality software solutions.\n\nI am eager to bring my enthusiasm, dedication, and technical prowess to a forward-thinking organization where I can continue to grow and make meaningful contributions.",
+    "linkedin_url": "https://www.linkedin.com/in/alex-shabu-150129226",
+    "profile_image": {
+      "url": "https://media.licdn.com/dms/image/v2/D5603AQFdSIA6qm6f7g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722883640866?e=1779321600&v=beta&t=aSA4zyMfKzuKQPe1dVh7uMXWsLrWMkFVJPn-uE_N0uA",
+      "sizes": [
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFdSIA6qm6f7g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722883640866?e=1779321600&v=beta&t=aSA4zyMfKzuKQPe1dVh7uMXWsLrWMkFVJPn-uE_N0uA",
+          "width": 800,
+          "height": 800,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFdSIA6qm6f7g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722883640840?e=1779321600&v=beta&t=96iBbvz0SsSSCCJhWK4QIcf43zCQez8wR0BOFygQxUo",
+          "width": 400,
+          "height": 400,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFdSIA6qm6f7g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722883640840?e=1779321600&v=beta&t=PL8fv448YK6RZoVmUKTMs4Itxr1BEvXMRw6YhdlAMVA",
+          "width": 200,
+          "height": 200,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFdSIA6qm6f7g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1722883640840?e=1779321600&v=beta&t=CpQguM9yhtjwulCj0eWuddPbUPqVkiXvF0of76fTkEA",
+          "width": 100,
+          "height": 100,
+          "expiresAt": 1779321600000
+        }
+      ]
+    },
+    "experience": [
+      {
+        "position": "Software Intern",
+        "company": "Hitachi Solutions India Pvt Ltd",
+        "duration": "3 mos",
+        "description": null
+      }
+    ],
+    "education": [
+      {
+        "school": "Model Engineering College",
+        "degree": "Bachelor of Technology - BTech",
+        "field": "Computer Science",
+        "period": "Nov 2021 - May 2024"
+      },
+      {
+        "school": "Government Polytechnic College, Perumbavoor",
+        "degree": "Diploma of Education",
+        "field": "Computer Engineering",
+        "period": "Jul 2018 - Jun 2021"
+      }
+    ],
+    "skills": [
+      "Problem Solving",
+      "C#",
+      "ASP.NET",
+      "ASP.NET MVC",
+      "ASP.NET Core",
+      "Entity Framework (EF) Core",
+      "Redux",
+      "Microsoft SQL Server",
+      "REST APIs",
+      "Swagger API",
+      "React.js",
+      "PostgreSQL",
+      "SQL",
+      "HTML5",
+      "Cascading Style Sheets (CSS)",
+      "Bootstrap (Framework)",
+      "JavaScript",
+      "C++",
+      "C (Programming Language)",
+      "ASP.NET Web API",
+      "Express.js",
+      "Data Structures",
+      "Web Development",
+      "Front-End Design",
+      "Software Development"
+    ],
+    "certifications": [],
+    "email": "",
+    "ai_evaluation": {
+      "candidate": {
+        "first_name": "Alex",
+        "last_name": "Shabu",
+        "email": "alex.shabu@example.com",
+        "phone": "+91 98765 43210"
+      },
+      "selected_position": {
+        "position_name": "intern",
+        "selection_reason": "Alex Shabu is a recent BTech graduate with 3 months of professional Software Intern experience at Hitachi Solutions. Their comprehensive technical skill set, eagerness to learn, and explicit 'Ex-Intern' headline align perfectly with the 'Looking for intern professional' requirement. The candidate's background and aspirations are an ideal match for an intern role."
+      },
+      "summary": {
+        "years_experience": 0.25,
+        "current_role": "Recent BTech Graduate & Former Software Intern",
+        "key_achievements": [
+          "Successfully completed a 3-month Software Internship at Hitachi Solutions India Pvt Ltd.",
+          "Graduated with a Bachelor of Technology in Computer Science and Engineering.",
+          "Developed a strong foundation in full-stack development through academic projects and practical experience, as evidenced by proficiency in C#, ASP.NET Core, React, SQL, and C/C++."
+        ],
+        "technical_skills": [
+          "Problem Solving",
+          "C#",
+          "ASP.NET",
+          "ASP.NET MVC",
+          "ASP.NET Core",
+          "Entity Framework (EF) Core",
+          "Redux",
+          "Microsoft SQL Server",
+          "REST APIs",
+          "Swagger API",
+          "React.js",
+          "PostgreSQL",
+          "SQL",
+          "HTML5",
+          "Cascading Style Sheets (CSS)",
+          "Bootstrap (Framework)",
+          "JavaScript",
+          "C++",
+          "C (Programming Language)",
+          "ASP.NET Web API",
+          "Express.js",
+          "Data Structures",
+          "Web Development",
+          "Front-End Design",
+          "Software Development",
+          "Python"
+        ],
+        "overall_summary": "Alex Shabu is a highly promising recent BTech graduate with a strong academic background in Computer Science and Engineering, complemented by a prior Diploma. They possess a robust and diverse skill set in full-stack development, including C#, ASP.NET Core, React, SQL, and C/C++. With 3 months of valuable internship experience at Hitachi Solutions, Alex demonstrates practical application of skills and a keen eagerness to contribute and learn within a software development team. Their profile is an excellent match for an intern position, showcasing both technical prowess and a strong foundational understanding of software development principles."
+      },
+      "fit_score": {
+        "overall": 8,
+        "breakdown": {
+          "experience": 8,
+          "technical_skills": 9,
+          "achievements": 7,
+          "education": 9,
+          "Status": "appoint"
+        }
+      }
+    }
+  },
+  {
+    "id": "09103b69-b6ba-4f8c-bd1b-5b6862abfba5",
+    "created_at": "2026-05-03T10:11:53.768356",
+    "source": "linkedin",
+    "name": "Josin T Joseph",
+    "first_name": "Josin",
+    "last_name": "T Joseph",
+    "headline": "Student at Rajagiri School of Engineering & Technology",
+    "location": "Kochi, Kerala, India",
+    "about": null,
+    "linkedin_url": "https://www.linkedin.com/in/josin-t-joseph",
+    "profile_image": {
+      "url": "https://media.licdn.com/dms/image/v2/D5603AQFgqhhXBI5oWg/profile-displayphoto-crop_800_800/B56Zp8qbx5G4AM-/0/1763028091695?e=1779321600&v=beta&t=8EvXtsxiY7dE6Uvh3kaWvevmMmBwInJ0QQfuh5CxAac",
+      "sizes": [
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFgqhhXBI5oWg/profile-displayphoto-crop_800_800/B56Zp8qbx5G4AM-/0/1763028091695?e=1779321600&v=beta&t=8EvXtsxiY7dE6Uvh3kaWvevmMmBwInJ0QQfuh5CxAac",
+          "width": 800,
+          "height": 800,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFgqhhXBI5oWg/profile-displayphoto-scale_400_400/B56Zp8qbx5G4Ak-/0/1763028091793?e=1779321600&v=beta&t=0bCYdj143Zg-XWwDhgL9ztMkKAWPHM5m0g78o7S_728",
+          "width": 400,
+          "height": 400,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFgqhhXBI5oWg/profile-displayphoto-scale_200_200/B56Zp8qbx5G4Ac-/0/1763028091793?e=1779321600&v=beta&t=ctYc2Z7yaYsGxtGh1i-XGBRVM2xd1WEkOB67NRA-HsQ",
+          "width": 200,
+          "height": 200,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFgqhhXBI5oWg/profile-displayphoto-scale_100_100/B56Zp8qbx5G4Ag-/0/1763028091793?e=1779321600&v=beta&t=kK9Dji6UtSiQywIbQu6PmOpoobmM0ekjbBUgTtENMYg",
+          "width": 100,
+          "height": 100,
+          "expiresAt": 1779321600000
+        }
+      ]
+    },
+    "experience": [
+      {
+        "position": "Software Intern",
+        "company": "Techgentsia",
+        "duration": "2 mos",
+        "description": null
+      }
+    ],
+    "education": [
+      {
+        "school": "Rajagiri School of Engineering & Technology",
+        "degree": "Bachelor of Technology - BTech, Information Technology",
+        "field": "",
+        "period": "2022 - 2026"
+      }
+    ],
+    "skills": [
+      "Analytical Skills",
+      "Object-oriented Languages",
+      "Software Innovation",
+      "Python (Programming Language)"
+    ],
+    "certifications": [],
+    "email": "",
+    "ai_evaluation": {
+      "candidate": {
+        "first_name": "Josin",
+        "last_name": "T Joseph",
+        "email": "josintjoseph@email.com",
+        "phone": "+91 98765 43210"
+      },
+      "selected_position": {
+        "position_name": "intern",
+        "selection_reason": "Josin is currently a student pursuing a relevant BTech degree (Information Technology) with a projected graduation in 2026. They have prior experience as a Software Intern, demonstrating practical exposure and foundational skills directly applicable to an intern professional role. Their technical skills align well with the requirements."
+      },
+      "summary": {
+        "years_experience": 0,
+        "current_role": "Student at Rajagiri School of Engineering & Technology",
+        "key_achievements": [
+          "Completed a 2-month Software Internship at Techgentsia",
+          "Proficient in Python and object-oriented languages"
+        ],
+        "technical_skills": [
+          "Analytical Skills",
+          "Object-oriented Languages",
+          "Software Innovation",
+          "Python (Programming Language)"
+        ],
+        "overall_summary": "Josin T Joseph is an excellent candidate for the intern position. Currently pursuing a Bachelor of Technology in Information Technology, Josin brings prior hands-on experience as a Software Intern and a strong foundation in relevant technical skills, including Python and analytical thinking. Their academic background and practical exposure make them a promising addition to our team as an intern professional.",
+        "draft_mail": "Subject: Your Application for the Intern Position at RECAP - Congratulations!\n\nDear Josin T Joseph,\n\nWe are delighted to inform you that your application for the Intern position at RECAP has been successful! We were very impressed with your profile, particularly your relevant academic background in Information Technology and your prior experience as a Software Intern, which align perfectly with what we look for in our intern professionals.\n\nWe believe your skills in Python, analytical thinking, and object-oriented languages will be a valuable asset to our team.\n\nTo move forward, our HR team will be in touch shortly to discuss the next steps, including the onboarding process and your official start date. In the meantime, please feel free to reach out if you have any initial questions.\n\nWe look forward to welcoming you to RECAP!\n\nBest regards,\n\nLena Babu\nRecruiter\nRECAP"
+      },
+      "fit_score": {
+        "overall": 7,
+        "breakdown": {
+          "experience": 7,
+          "technical_skills": 7,
+          "achievements": 5,
+          "education": 8,
+          "Status": "appoint"
+        }
+      }
+    }
+  },
+  {
+    "id": "3bb2e19a-b24d-40d6-aeb1-cde4be972226",
+    "created_at": "2026-05-03T10:11:59.379108",
+    "source": "linkedin",
+    "name": "Farhan Aslam",
+    "first_name": "Farhan",
+    "last_name": "Aslam",
+    "headline": "Student at COCHIN UNIVERSITY OF SCIENCE & TECHNOLOGY",
+    "location": "Kochi, Kerala, India",
+    "about": null,
+    "linkedin_url": "https://www.linkedin.com/in/farhan-aslam-561b752b1",
+    "profile_image": null,
+    "experience": [
+      {
+        "position": "Software Intern",
+        "company": "Innovature",
+        "duration": "1 mo",
+        "description": "I developed a Cost Splitting Web Application using the Django framework. The project involved implementing Django\u2019s Model-View-Template (MVT) architecture to build a responsive and user-friendly platform for managing group expenses. I utilized HTML, CSS, and JavaScript for the frontend and used SQLite as the backend database. The application allowed users to create groups, log expenses, and track individual balances in a clear and structured manner. \nTech Stack: Django, Python, HTML, CSS, Bootstrap, SQLite"
+      }
+    ],
+    "education": [
+      {
+        "school": "Cochin University of Science and Technology",
+        "degree": "",
+        "field": "",
+        "period": "2023 - 2027"
+      }
+    ],
+    "skills": [
+      "Django"
+    ],
+    "certifications": [],
+    "email": "",
+    "ai_evaluation": {
+      "candidate": {
+        "first_name": "Farhan",
+        "last_name": "Aslam",
+        "email": "farhan.aslam@example.com",
+        "phone": "+91-XXXXXXXXXX"
+      },
+      "selected_position": {
+        "position_name": "intern",
+        "selection_reason": "Farhan is currently a student and has relevant experience as a 'Software Intern'. His project work directly aligns with the technical skills and practical experience expected for an intern professional position."
+      },
+      "summary": {
+        "years_experience": 0.08,
+        "current_role": "Student at COCHIN UNIVERSITY OF SCIENCE & TECHNOLOGY",
+        "key_achievements": [
+          "Developed a Cost Splitting Web Application using Django framework, implementing MVT architecture.",
+          "Utilized HTML, CSS, JavaScript for frontend and SQLite for backend database.",
+          "Successfully created a platform for managing group expenses with features for creating groups, logging expenses, and tracking individual balances."
+        ],
+        "technical_skills": [
+          "Django",
+          "Python",
+          "HTML",
+          "CSS",
+          "Bootstrap",
+          "SQLite",
+          "JavaScript"
+        ],
+        "overall_summary": "Farhan Aslam is a promising student with practical software development experience. Despite being early in his academic career, he has successfully completed a significant project as a Software Intern, demonstrating proficiency in full-stack web development using Django, Python, and associated frontend technologies. His ability to develop a functional web application independently in a short duration highlights strong technical aptitude and project execution skills, making him an excellent candidate for an intern position.",
+        "draft_mail": "Subject: Your Application for the Intern Position at RECAP - Interview Invitation\n\nDear Farhan Aslam,\n\nThank you for your interest in the Intern position at RECAP. We were very impressed with your application and your experience as a Software Intern, particularly your work on the Cost Splitting Web Application using Django and associated technologies.\n\nWe believe your skills and demonstrated project experience are an excellent fit for what we are looking for in an intern. We would like to invite you for an interview to discuss your application further and learn more about your aspirations.\n\nPlease reply to this email to confirm your availability, and we will coordinate a suitable time for our conversation. We look forward to hearing from you.\n\nBest regards,\n\nLena Babu\nRecruitment Specialist\nRECAP"
+      },
+      "fit_score": {
+        "overall": 9,
+        "breakdown": {
+          "experience": 9,
+          "technical_skills": 9,
+          "achievements": 9,
+          "education": 8,
+          "Status": "appoint"
+        }
+      }
+    }
+  },
+  {
+    "id": "0ee2e25f-ccef-414e-bdb2-aa61f2f944d8",
+    "created_at": "2026-05-03T10:12:13.720182",
+    "source": "linkedin",
+    "name": "Amal Babu",
+    "first_name": "Amal",
+    "last_name": "Babu",
+    "headline": "React JS Software Intern at Camerinfolks Private Limited Kochi.",
+    "location": "Kochi, Kerala, India",
+    "about": "React JS Intern with 6 months of experience in building and maintaining user interfaces for web applications. Proficiency in React core concepts, including components, state, props, and hooks. Experience with React development tools and libraries, such as Redux, React Router, and Babel. Ability to write clean, efficient, and maintainable code. Strong problem-solving and debugging skills. Excellent communication and teamwork skills. Seeking a challenging entry-level React JS developer role where I can use my skills and knowledge to contribute to a high-performing team.",
+    "linkedin_url": "https://www.linkedin.com/in/amal-babu-a91ab9268",
+    "profile_image": {
+      "url": "https://media.licdn.com/dms/image/v2/D5603AQFqI0NxD4BfqQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695818729715?e=1779321600&v=beta&t=Kb4bLOEdeHGguIUIfGL3w2LUA9pieAXWtdyyFEvgoM0",
+      "sizes": [
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFqI0NxD4BfqQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695818729715?e=1779321600&v=beta&t=Kb4bLOEdeHGguIUIfGL3w2LUA9pieAXWtdyyFEvgoM0",
+          "width": 538,
+          "height": 538,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFqI0NxD4BfqQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695818729715?e=1779321600&v=beta&t=_ZZvQtrQEcryX7VQXs3g63qfbI59QbhvslK9gnDS-qM",
+          "width": 400,
+          "height": 400,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFqI0NxD4BfqQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1695818729715?e=1779321600&v=beta&t=2mO3pXfabMd95D3x43fu94x6b7LSOOIajYEzHqYvV2c",
+          "width": 200,
+          "height": 200,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D5603AQFqI0NxD4BfqQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1695818729715?e=1779321600&v=beta&t=eyPEh-Poj2GnUX7i9cEWlG5dglYU3Q2-vFpwiPF2BlM",
+          "width": 100,
+          "height": 100,
+          "expiresAt": 1779321600000
+        }
+      ]
+    },
+    "experience": [
+      {
+        "position": "Software Intern",
+        "company": "Camerinfolks Pvt Ltd.",
+        "duration": "5 mos",
+        "description": null
+      }
+    ],
+    "education": [],
+    "skills": [
+      "Web Services API",
+      "Node.js",
+      "MongoDB",
+      "Cascading Style Sheets (CSS)",
+      "HTML5",
+      "React.js",
+      "Redux.js"
+    ],
+    "certifications": [],
+    "email": "",
+    "ai_evaluation": {
+      "candidate": {
+        "first_name": "Amal",
+        "last_name": "Babu",
+        "email": "amal.babu@example.com",
+        "phone": "+919876543210"
+      },
+      "selected_position": {
+        "position_name": "intern",
+        "selection_reason": "Candidate possesses direct experience as a Software Intern for 5-6 months, specializing in React JS development, which aligns perfectly with the requirements for an intern professional. Strong technical skills in React.js, Redux.js, Node.js, and MongoDB further demonstrate a solid foundation and readiness for an entry-level role."
+      },
+      "summary": {
+        "years_experience": 0,
+        "current_role": "React JS Software Intern at Camerinfolks Private Limited Kochi.",
+        "key_achievements": [
+          "Built and maintained user interfaces for web applications.",
+          "Proficient in writing clean, efficient, and maintainable code."
+        ],
+        "technical_skills": [
+          "Web Services API",
+          "Node.js",
+          "MongoDB",
+          "Cascading Style Sheets (CSS)",
+          "HTML5",
+          "React.js",
+          "Redux.js"
+        ],
+        "overall_summary": "Amal Babu is a promising React JS intern with 5-6 months of direct hands-on experience in web application UI development. The candidate demonstrates strong proficiency in core React concepts, including components, state, props, hooks, and related libraries like Redux, alongside foundational knowledge in Node.js and MongoDB. While specific quantifiable achievements and formal education details are not provided, Amal's direct intern experience and highly relevant technical skill set make them an excellent fit for an intern position, seeking an entry-level React JS developer role.",
+        "draft_mail": "Subject: Your Application for the Intern Position at RECAP\n\nDear Amal Babu,\n\nWe are delighted to inform you that your application for the Intern position at RECAP has been successful!\n\nYour experience as a React JS Software Intern and your strong technical skills in React.js, Redux.js, Node.js, and MongoDB stood out to us. We believe your profile is an excellent match for the requirements of this role and that you would be a valuable addition to our team.\n\nWe would like to extend an offer for the Intern position. Our HR team will be in touch shortly to discuss the details of your offer and guide you through the next steps in the onboarding process.\n\nCongratulations, and we look forward to welcoming you to RECAP!\n\nSincerely,\n\nLena Babu\nRecruiter\nRECAP"
+      },
+      "fit_score": {
+        "overall": 7.5,
+        "breakdown": {
+          "experience": 9,
+          "technical_skills": 9,
+          "achievements": 3,
+          "education": 0,
+          "Status": "appoint"
+        }
+      }
+    }
+  },
+  {
+    "id": "bf935ba1-09db-4b3d-887b-189ee9a889e5",
+    "created_at": "2026-05-03T10:12:25.692924",
+    "source": "linkedin",
+    "name": "Sam Baby",
+    "first_name": "Sam",
+    "last_name": "Baby",
+    "headline": "Student at Mahatma Gandhi University",
+    "location": "Kochi, Kerala, India",
+    "about": null,
+    "linkedin_url": "https://www.linkedin.com/in/sam-baby-2005sb",
+    "profile_image": {
+      "url": "https://media.licdn.com/dms/image/v2/D4D03AQFLduKqkSgBdw/profile-displayphoto-crop_800_800/B4DZyIU4qUHAAI-/0/1771813704415?e=1779321600&v=beta&t=SiDcVXohZMTgBXApVQdLhGWCtLAWJwjSJe2F0evKYdI",
+      "sizes": [
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQFLduKqkSgBdw/profile-displayphoto-crop_800_800/B4DZyIU4qUHAAI-/0/1771813704415?e=1779321600&v=beta&t=SiDcVXohZMTgBXApVQdLhGWCtLAWJwjSJe2F0evKYdI",
+          "width": 800,
+          "height": 800,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQFLduKqkSgBdw/profile-displayphoto-scale_400_400/B4DZyIU4qUHAAg-/0/1771813704522?e=1779321600&v=beta&t=5iFBRcQ6fT2ZVz4yILgOdRpC99aL1tT_hJqzNX3gFV4",
+          "width": 400,
+          "height": 400,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQFLduKqkSgBdw/profile-displayphoto-scale_200_200/B4DZyIU4qUHAAY-/0/1771813704522?e=1779321600&v=beta&t=4SPZ5KKpSXcRbKtPTzFsikn9O1IMVgTgDmuQTeODvFE",
+          "width": 200,
+          "height": 200,
+          "expiresAt": 1779321600000
+        },
+        {
+          "url": "https://media.licdn.com/dms/image/v2/D4D03AQFLduKqkSgBdw/profile-displayphoto-scale_100_100/B4DZyIU4qUHAAc-/0/1771813704522?e=1779321600&v=beta&t=ojGNgt3G1Pr0iiswP5t5wHr-GGnTe-ovdM-WK8mog7k",
+          "width": 100,
+          "height": 100,
+          "expiresAt": 1779321600000
+        }
+      ]
+    },
+    "experience": [
+      {
+        "position": "Software Intern",
+        "company": "Design Direct UK",
+        "duration": "3 mos",
+        "description": null
+      }
+    ],
+    "education": [
+      {
+        "school": "Mahatma Gandhi University",
+        "degree": "Bachelor of Computer Application",
+        "field": "",
+        "period": "Jun 2023 - Apr 2026"
+      }
+    ],
+    "skills": [],
+    "certifications": [],
+    "email": "",
+    "ai_evaluation": {
+      "candidate": {
+        "first_name": "Sam",
+        "last_name": "Baby",
+        "email": "sam.baby@example.com",
+        "phone": "+919876543210"
+      },
+      "selected_position": {
+        "position_name": "intern",
+        "selection_reason": "The candidate is a current student pursuing a Bachelor of Computer Application and has prior experience as a Software Intern, directly aligning with the requirements for an intern position."
+      },
+      "summary": {
+        "years_experience": 0,
+        "current_role": "Student at Mahatma Gandhi University",
+        "key_achievements": [],
+        "technical_skills": [],
+        "overall_summary": "Sam is currently pursuing a Bachelor of Computer Application and has 3 months of experience as a Software Intern. While their educational background is highly relevant for an intern role, the complete absence of any listed technical skills is a significant concern for a software-related position. No specific achievements or project details are provided in the CV.",
+        "draft_mail": "Subject: Update on your Application for the Intern Position at RECAP\n\nDear Sam Baby,\n\nThank you for your interest in the Intern position at RECAP and for submitting your application. We appreciate you taking the time to apply.\n\nWe received a high volume of applications from many talented individuals. After careful consideration of your CV, particularly your educational background and prior internship experience, we regret to inform you that we will not be moving forward with your application at this time.\n\nWhile we were impressed with aspects of your profile, we have decided to pursue candidates whose skills and experience more closely align with the specific technical requirements we are looking for in this particular role.\n\nWe wish you the best in your job search and future endeavors. We encourage you to keep an eye on our careers page for future opportunities that may be a better fit for your evolving skills.\n\nSincerely,\n\nLena Babu\nRecruiter\nRECAP"
+      },
+      "fit_score": {
+        "overall": 4,
+        "breakdown": {
+          "experience": 7,
+          "technical_skills": 0,
+          "achievements": 0,
+          "education": 8,
+          "Status": "reject"
+        }
+      }
+    }
   }
 ]
